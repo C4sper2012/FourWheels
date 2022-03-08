@@ -4,7 +4,216 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="images/1920x500.gif" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Lige nu, 20% rabat på lille service</h5>
+                            <p>(Gælder ikke biler med fire hjul)</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="images/1920x500.gif" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Nyhed 2 overskrift</h5>
+                            <p>Nyhed 2 undertekst</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="images/1920x500.gif" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Nyhed 3 overskrift</h5>
+                            <p>Nyhed 3 undertekst</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <hr>
 </div>
+<hr>
+
+<!-- add some foreach something !-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-12">
+            <div class="row">
+                <div class="col-sm-6 col-12">
+                    <div class="card">
+                        <img class="card-img-top" src="img/200x200.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="col-lg-4 col-12">
+    <div class="row mx-0">
+        <div class="col-12 card bg-light mx-auto">
+            <h3 class="text-center card-header">Vælg din service</h3>
+            <form class="card-body">
+                <div class="form-group row">
+                    <label for="location1" class="col-form-label">Type:</label>
+                    <select class="form-control" name="location" id="location1">
+                        <option value="">Vælg service</option>
+                        <option value="">Stort service</option>
+                        <option value="">Lille service</option>
+                        <option value="">Hjulskift</option>
+                        <option value="">Synstjek</option>
+                    </select>
+                </div>
+                <div class="form-group row">
+                    <label for="pricefrom" class="col-form-label">Pris</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text" id="basic-addon1">Kr</div>
+                        </div>
+                        <input type="text" class="form-control" id="pricefrom" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <p class="text-center">
+                    <a href="#" class="btn btn-danger" role="button">Søg</a>
+                </p>
+            </form>
+        </div>
+        <div class="col-12">
+            <h3 class="text-center">Mekanikere</h3>
+            <hr>
+            <div class="media">
+                <img class="mr-3" src="images/64X64.gif" alt="Generic placeholder image">
+                <div class="media-body">
+                    <h5 class="mt-0">John Doe</h5>
+                    <abbr title="Phone">P:</abbr> (123) 456-7890 <a href="mailto:#">first.last@example.com</a>
+                </div>
+            </div>
+            <div class="media mt-2">
+                <img class="mr-3" src="images/64X64.gif" alt="Generic placeholder image">
+                <div class="media-body">
+                    <h5 class="mt-0">Linda Smith</h5>
+                    <abbr title="Phone">P:</abbr> (123) 456-7890 <a href="mailto:#">first.last@example.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <h3>Nye brugte biler</h3>
+                <hr>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img src="images/72X72.gif" alt="Thumbnail Image 1">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img src="images/72X72.gif" alt="Thumbnail Image 1">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img src="images/72X72.gif" alt="Thumbnail Image 1">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img src="images/72X72.gif" alt="Thumbnail Image 1">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img src="images/72X72.gif" alt="Thumbnail Image 1">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img src="images/72X72.gif" alt="Thumbnail Image 1">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img src="images/72X72.gif" alt="Thumbnail Image 1">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img src="images/72X72.gif" alt="Thumbnail Image 1">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="text-center">
+                            <img src="images/72X72.gif" alt="Thumbnail Image 1">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="col-md-6 col-12">
+                <h3>Særlige tilbud</h3>
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Bil 1</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Bil 2</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Bil 3</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <p class="text-center mt-2">
+                            <img src="images/3b536b.gif" alt="">
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus maxime aut ea impedit voluptates aperiam dolor laborum officiis autem aspernatur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, alias, repudiandae sunt illo consequatur aperiam doloribus nesciunt ut deserunt ipsa est tempora nihil. Totam eveniet aperiam debitis fugit ipsa doloremque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio sequi dolorem suscipit assumenda molestiae voluptatem qui consequuntur magni? Deleniti, corporis.</p>
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <p class="text-center mt-2">
+                            <img src="images/3b536b.gif" alt="">
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus maxime aut ea impedit voluptates aperiam dolor laborum officiis autem aspernatur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, alias, repudiandae sunt illo consequatur aperiam doloribus nesciunt ut deserunt ipsa est tempora nihil. Totam eveniet aperiam debitis fugit ipsa doloremque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio sequi dolorem suscipit assumenda molestiae voluptatem qui consequuntur magni? Deleniti, corporis.</p>
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <p class="text-center mt-2">
+                            <img src="images/3b536b.gif" alt="">
+                        </p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus maxime aut ea impedit voluptates aperiam dolor laborum officiis autem aspernatur! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, alias, repudiandae sunt illo consequatur aperiam doloribus nesciunt ut deserunt ipsa est tempora nihil. Totam eveniet aperiam debitis fugit ipsa doloremque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio sequi dolorem suscipit assumenda molestiae voluptatem qui consequuntur magni? Deleniti, corporis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr>

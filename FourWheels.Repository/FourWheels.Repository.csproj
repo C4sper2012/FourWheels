@@ -9,7 +9,6 @@
     <ItemGroup>
       <Folder Include="Domain" />
       <Folder Include="Entities" />
-      <Folder Include="Interfaces" />
       <Folder Include="Repository" />
     </ItemGroup>
 
