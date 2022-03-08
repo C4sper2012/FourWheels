@@ -14,7 +14,7 @@ namespace FourWheels.Repository.Entities
         public int Reservedele { get; set; }
 
         public int Mekaniker { get; set; }
-        public DateTime Oprettet { get; set; }
+        public DateTime Oprettet { get; set; } = DateTime.UtcNow;
         public DateTime TidBrugt { get; set; }
 
 

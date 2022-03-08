@@ -7,18 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Entities" />
       <Folder Include="Interfaces" />
       <Folder Include="Repository" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Remove="Entities\Bil.cs" />
-      <Compile Remove="Entities\Kunde.cs" />
     </ItemGroup>
 
 </Project>
