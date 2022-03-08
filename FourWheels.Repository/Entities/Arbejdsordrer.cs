@@ -8,6 +8,20 @@ namespace FourWheels.Repository.Entities
 {
     public class Arbejdsordrer
     {
+        public int ID { get; set; }
+        public int Bil_ID { get; set; }
+        public int Service_ID { get; set; }
+        public int Reservedele { get; set; }
+
+        public int Mekaniker { get; set; }
+        public DateTime Oprettet { get; set; }
+        public DateTime TidBrugt { get; set; }
+
+
+        public Mekaiker Mekaiker { get; set; }
+        public Bil Bil { get; set; }
+        public Servicetype Servicetype { get; set; }
+        public Reservdele Reservdele { get; set; }
 
     }
 }
