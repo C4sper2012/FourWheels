@@ -1,172 +1,190 @@
 ﻿using FourWheels.Repository.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace FourWheels.Repository.Domain;
-
-public class FourWheelsContext : DbContext
+namespace FourWheels.Repository.Domain
 {
-    public DbSet<Arbejdsordrer> Arbejdsordrer { get; set; }
-    public DbSet<Bil> Biler { get; set; }
-    public DbSet<BrugerReservdele> BrugteReservedele { get; set; }
-    public DbSet<Kunde> Kunder { get; set; }
-    public DbSet<Mekaiker> Mekaikere { get; set; }
-    public DbSet<Reservdele> Reservedele { get; set; }
-    public DbSet<Servicetype> Servicetyper { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder builder)
+    public class FourWheelsContext : DbContext
     {
-           #region Constraints
-        #region Bil
-        builder.Entity<Bil>()
-               .Property(p => p.Registreringsnummer)
-               .HasMaxLength(10)
-               .IsUnicode(true);
+        public DbSet<Arbejdsordrer> Arbejdsordrer { get; set; }
+        public DbSet<Bil> Biler { get; set; }
+        public DbSet<BrugerReservdele> BrugteReservedele { get; set; }
+        public DbSet<Kunde> Kunder { get; set; }
+        public DbSet<Mekaiker> Mekaikere { get; set; }
+        public DbSet<Reservdele> Reservedele { get; set; }
+        public DbSet<Servicetype> Servicetyper { get; set; }
 
-        builder.Entity<Bil>()
-               .Property(p => p.Stelnummer)
-               .HasMaxLength(50)
-               .IsUnicode(false);
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            #region Constraints
 
-        builder.Entity<Bil>()
-               .Property(p => p.Producent)
-               .HasMaxLength(75)
-               .IsUnicode(false);
+            #region Bil
 
-        builder.Entity<Bil>()
-               .Property(p => p.Model)
-               .HasMaxLength(50)
-               .IsUnicode(false);
+            builder.Entity<Bil>()
+                .Property(p => p.Registreringsnummer)
+                .HasMaxLength(10)
+                .IsUnicode(true);
 
-        builder.Entity<Bil>()
-               .Property(p => p.Ejer);
-        #endregion
+            builder.Entity<Bil>()
+                .Property(p => p.Stelnummer)
+                .HasMaxLength(50)
+                .IsUnicode(false);
 
-        #region Kunde
-        builder.Entity<Kunde>()
-               .Property(p => p.Fornavn)
-               .HasMaxLength(50)
-               .IsUnicode();
-        
-        builder.Entity<Kunde>()
-               .Property(p => p.Efternavn)
-               .HasMaxLength(50)
-               .IsUnicode();
+            builder.Entity<Bil>()
+                .Property(p => p.Producent)
+                .HasMaxLength(75)
+                .IsUnicode(false);
 
-        builder.Entity<Kunde>()
-               .Property(p => p.VejNavn)
-               .HasMaxLength(75)
-               .IsUnicode();
+            builder.Entity<Bil>()
+                .Property(p => p.Model)
+                .HasMaxLength(50)
+                .IsUnicode(false);
 
-        builder.Entity<Kunde>()
-               .Property(p => p.Postnummer);
+            builder.Entity<Bil>()
+                .Property(p => p.Ejer);
 
-        builder.Entity<Kunde>()
-               .Property(p => p.Bynavn)
-               .HasMaxLength(50)
-               .IsUnicode();
+            #endregion
 
-        builder.Entity<Kunde>()
-               .Property(p => p.Telefon)
-               .IsUnicode(false)
-               .HasMaxLength(15);
-        
-        builder.Entity<Kunde>()
-               .Property(p => p.Mobil)
-               .HasMaxLength(15)
-               .IsUnicode(false);
-        
-        builder.Entity<Kunde>()
-               .Property(p => p.Email)
-               .IsUnicode();
-        #endregion
-        
-        #region Arbejdsordrer
-        builder.Entity<Arbejdsordrer>()
-               .Property(p => p.Bil_ID);
+            #region Kunde
 
-        builder.Entity<Arbejdsordrer>()
-               .Property(p => p.Service_ID);
+            builder.Entity<Kunde>()
+                .Property(p => p.Fornavn)
+                .HasMaxLength(50)
+                .IsUnicode();
 
-        builder.Entity<Arbejdsordrer>()
-               .Property(p => p.Mekaniker);
-        
-        builder.Entity<Arbejdsordrer>()
-               .Property(p => p.Reservdele);
+            builder.Entity<Kunde>()
+                .Property(p => p.Efternavn)
+                .HasMaxLength(50)
+                .IsUnicode();
 
-        builder.Entity<Arbejdsordrer>()
-               .Property(p => p.Oprettet);
+            builder.Entity<Kunde>()
+                .Property(p => p.VejNavn)
+                .HasMaxLength(75)
+                .IsUnicode();
 
-        builder.Entity<Arbejdsordrer>()
-               .Property(p => p.TidBrugt);
-        #endregion
-        
-        #region BrugerReservdele
-        builder.Entity<BrugerReservdele>()
-               .Property(p => p.Reservedel_ID);
+            builder.Entity<Kunde>()
+                .Property(p => p.Postnummer);
 
-        builder.Entity<BrugerReservdele>()
-               .Property(p => p.Antal);
-        #endregion
-        
-        #region Servicetype
-        builder.Entity<Servicetype>()
-               .Property(p => p.ServiceType)
-               .HasMaxLength(50)
-               .IsUnicode();
-        #endregion
-        
-        #region Reservedele
-        builder.Entity<Reservdele>()
-               .Property(p => p.Reservedel)
-               .HasMaxLength(50)
-               .IsUnicode();
-        #endregion
-        
-        #region Mekaniker
-        builder.Entity<Mekaiker>()
-               .Property(p => p.Fornavn)
-               .HasMaxLength(50)
-               .IsUnicode(false);
+            builder.Entity<Kunde>()
+                .Property(p => p.Bynavn)
+                .HasMaxLength(50)
+                .IsUnicode();
 
-        builder.Entity<Mekaiker>()
-               .Property(p => p.Efternavn)
-               .HasMaxLength(50)
-               .IsUnicode(false);
+            builder.Entity<Kunde>()
+                .Property(p => p.Telefon)
+                .IsUnicode(false)
+                .HasMaxLength(15);
 
-        builder.Entity<Mekaiker>()
-               .Property(p => p.Stilling)
-               .HasMaxLength(20)
-               .IsUnicode(false);
-        #endregion
+            builder.Entity<Kunde>()
+                .Property(p => p.Mobil)
+                .HasMaxLength(15)
+                .IsUnicode(false);
 
-        #endregion
-        
-        #region Relations
-        builder.Entity<Bil>()
-               .HasMany<Arbejdsordrer>()
-               .WithOne();
+            builder.Entity<Kunde>()
+                .Property(p => p.Email)
+                .IsUnicode();
 
-        builder.Entity<Bil>()
-               .HasOne<Kunde>()
-               .WithMany();
+            #endregion
 
-        builder.Entity<BrugerReservdele>()
-               .HasMany<Arbejdsordrer>()
-               .WithOne();
+            #region Arbejdsordrer
 
-        builder.Entity<BrugerReservdele>()
-               .HasMany<Reservdele>()
-               .WithOne();
-        
-        builder.Entity<Mekaiker>()
-               .HasMany<Arbejdsordrer>()
-               .WithOne();
-        
-        builder.Entity<Servicetype>()
-               .HasOne<Arbejdsordrer>()
-               .WithMany();
-        #endregion
+            builder.Entity<Arbejdsordrer>()
+                .Property(p => p.Bil_ID);
 
-        base.OnModelCreating(builder);
+            builder.Entity<Arbejdsordrer>()
+                .Property(p => p.Service_ID);
+
+            builder.Entity<Arbejdsordrer>()
+                .Property(p => p.Mekaniker);
+
+            builder.Entity<Arbejdsordrer>()
+                .Property(p => p.Reservdele);
+
+            builder.Entity<Arbejdsordrer>()
+                .Property(p => p.Oprettet);
+
+            builder.Entity<Arbejdsordrer>()
+                .Property(p => p.TidBrugt);
+
+            #endregion
+
+            #region BrugerReservdele
+
+            builder.Entity<BrugerReservdele>()
+                .Property(p => p.Reservedel_ID);
+
+            builder.Entity<BrugerReservdele>()
+                .Property(p => p.Antal);
+
+            #endregion
+
+            #region Servicetype
+
+            builder.Entity<Servicetype>()
+                .Property(p => p.ServiceType)
+                .HasMaxLength(50)
+                .IsUnicode();
+
+            #endregion
+
+            #region Reservedele
+
+            builder.Entity<Reservdele>()
+                .Property(p => p.Reservedel)
+                .HasMaxLength(50)
+                .IsUnicode();
+
+            #endregion
+
+            #region Mekaniker
+
+            builder.Entity<Mekaiker>()
+                .Property(p => p.Fornavn)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            builder.Entity<Mekaiker>()
+                .Property(p => p.Efternavn)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+
+            builder.Entity<Mekaiker>()
+                .Property(p => p.Stilling)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+
+            #endregion
+
+            #endregion
+
+            #region Relations
+
+            builder.Entity<Bil>()
+                .HasMany<Arbejdsordrer>()
+                .WithOne();
+
+            builder.Entity<Bil>()
+                .HasOne<Kunde>()
+                .WithMany();
+
+            builder.Entity<BrugerReservdele>()
+                .HasMany<Arbejdsordrer>()
+                .WithOne();
+
+            builder.Entity<BrugerReservdele>()
+                .HasMany<Reservdele>()
+                .WithOne();
+
+            builder.Entity<Mekaiker>()
+                .HasMany<Arbejdsordrer>()
+                .WithOne();
+
+            builder.Entity<Servicetype>()
+                .HasOne<Arbejdsordrer>()
+                .WithMany();
+
+            #endregion
+
+            base.OnModelCreating(builder);
+        }
     }
 }
