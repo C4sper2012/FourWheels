@@ -142,20 +142,20 @@ public class FourWheelsContext : DbContext
         #endregion
         
         #region Relations
-        builder.Entity<Kunde>()
+        builder.Entity<Bil>()
                .HasMany<Arbejdsordrer>()
                .WithOne();
 
         builder.Entity<Bil>()
                .HasOne<Kunde>()
-               .WithOne();
+               .WithMany();
 
         builder.Entity<BrugerReservdele>()
                .HasMany<Arbejdsordrer>()
                .WithOne();
 
         builder.Entity<BrugerReservdele>()
-               .HasOne<Reservdele>()
+               .HasMany<Reservdele>()
                .WithOne();
         
         builder.Entity<Mekaiker>()
