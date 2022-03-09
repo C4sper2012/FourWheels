@@ -1,0 +1,14 @@
+﻿@page
+@model FourWheels.web.Pages.CreateAO
+
+@{
+    Layout = "Shared/_Layout";
+}
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="ArbejdsOrdrer.TidBrugt"></label>
+        <input asp-for="ArbejdsOrdrer.TidBrugt" class="form-control">
+        <span class="text-danger" asp-validation-for="ArbejdsOrdrer.TidBrugt"></span>
+    </div>
+</form>

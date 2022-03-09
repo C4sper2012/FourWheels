@@ -13,6 +13,11 @@ namespace FourWheels.Repository.Domain
         public DbSet<Reservdele> Reservedele { get; set; }
         public DbSet<Servicetype> Servicetyper { get; set; }
 
+        public FourWheelsContext(DbContextOptions options) : base(options)
+        {
+            
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             #region Constraints
