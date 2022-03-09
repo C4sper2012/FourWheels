@@ -1,4 +1,47 @@
 ﻿@page
 @model FourWheels.web.Pages.CreateBilModel
 @{
+    ViewData["Title"] = "Opret bil";
 }
+
+
+<h1>Opret bil</h1>
+
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label class="control-label">Registreringsnummer</label>
+                <input class="form-control" />
+                <span class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Stelnummer</label>
+                <input class="form-control"/>
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Producent</label>
+                <input class="form-control"/>
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Model</label>
+                <input class="form-control"/>
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ejer</label>
+                <input class="form-control"/>
+                <span class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary"></button>
+        </form>>
+    </div>
+</div>
+
+
+
+
