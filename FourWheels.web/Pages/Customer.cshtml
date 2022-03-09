@@ -1,0 +1,69 @@
+﻿@page
+@model FourWheels.web.Pages.Customer
+@{
+}
+
+@page
+@model Autoshop.Web.Pages.Items.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Item</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Item.Name" class="control-label"></label>
+                <input asp-for="Item.Name" class="form-control" />
+                <span asp-validation-for="Item.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.Manufactorer" class="control-label"></label>
+                <select asp-for="Item.Manufactorer" asp-items="@Html.GetEnumSelectList<Manufacturer>()" class="form-control"></select>
+                <span asp-validation-for="Item.Manufactorer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.Category" class="control-label"></label>
+                <select asp-for="Item.Category" asp-items="@Html.GetEnumSelectList<Category>()" class="form-control"></select>
+                <span asp-validation-for="Item.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.Brand" class="control-label"></label>
+                <select asp-for="Item.Brand" asp-items="@Html.GetEnumSelectList<Brand>()" class="form-control"></select>
+                <span asp-validation-for="Item.Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.Description" class="control-label"></label>
+                <input asp-for="Item.Description" class="form-control" />
+                <span asp-validation-for="Item.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Item.Price" class="control-label"></label>
+                <input asp-for="Item.Price" class="form-control" />
+                <span asp-validation-for="Item.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" accept="image/*" type="file" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
