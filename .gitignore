@@ -6,3 +6,4 @@ riderModule.iml
 /DesignTimeBuild/
 /v17/
 /.vs/FourWheels.web/DesignTimeBuild/.dtbcache.v2
+*.suo
