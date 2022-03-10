@@ -249,7 +249,7 @@ namespace FourWheels.Repository.Domain
                 new Servicetype { Id = 4, ServiceType = "Synstjek" },
                 new Servicetype { Id = 5, ServiceType = "Karosseriskade" },
                 new Servicetype { Id = 6, ServiceType = "Hjulskift" }
-            )
+            );
 
             #endregion
 
