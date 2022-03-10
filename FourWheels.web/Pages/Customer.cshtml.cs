@@ -8,7 +8,6 @@ namespace FourWheels.web.Pages
     public class CreateModel : PageModel
     {
         private readonly ICustomerService _customerService;
-        private readonly string _imagePath = $"{Environment.CurrentDirectory}\\wwwroot\\img\\";
         
         public CreateModel(ICustomerService customerService)
         {
@@ -21,7 +20,7 @@ namespace FourWheels.web.Pages
         }
 
         [BindProperty]
-        public Kunde Item { get; set; }
+        public Kunde Kunde { get; set; }
 
         [BindProperty]
         public IFormFile ImageFile { get; set; }
@@ -34,7 +33,7 @@ namespace FourWheels.web.Pages
                 return Page();
             }
             
-            await _customerService.CreateAsync(Item);
+            await _customerService.CreateAsync(Kunde);
 
             return RedirectToPage("./Index");
         }
