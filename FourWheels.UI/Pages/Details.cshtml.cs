@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FourWheels.web.Pages.Shared
+namespace FourWheels.UI.Pages
 {
     public class Details : PageModel
     {

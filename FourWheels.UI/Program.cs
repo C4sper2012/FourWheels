@@ -14,10 +14,13 @@ builder.Services.AddScoped<IArbejdsOrdrerService, ArbejdsOrdrerService>();
 
 builder.Services.AddScoped<IBilService, BilService>();
 builder.Services.AddScoped<IKundeService, KundeService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
 builder.Services.AddScoped<IServiceTypeService, ServiceTypeService>();
 
 builder.Services.AddScoped<IBilRepository, BilRepository>();
 builder.Services.AddScoped<IKundeRepository, KundeRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();
 
 builder.Services.AddDbContext<FourWheelsContext>(option =>

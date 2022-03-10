@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourWheels.web", "FourWheels.web\FourWheels.web.csproj", "{51F9B50D-52B7-488F-81F8-AE73C594FFBE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourWheels.UI", "FourWheels.UI\FourWheels.UI.csproj", "{51F9B50D-52B7-488F-81F8-AE73C594FFBE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourWheels.Service", "FourWheels.Service\FourWheels.Service.csproj", "{85671756-6A69-4A82-BD2C-51DD7775C974}"
 EndProject
