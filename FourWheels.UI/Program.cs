@@ -1,5 +1,4 @@
 using FourWheels.Repository.Domain;
-using FourWheels.Repository.Entities;
 using FourWheels.Repository.Interfaces;
 using FourWheels.Repository.Repository;
 using FourWheels.Service.Interfaces;

@@ -2,15 +2,14 @@
 using FourWheels.Repository.Interfaces;
 using FourWheels.Service.Interfaces;
 
-namespace FourWheels.Service.Services
+namespace FourWheels.Service.Services;
+
+public class CustomerService : GenericService<Kunde, ICustomerRepository>, ICustomerService
 {
-    public class CustomerService : GenericService<Kunde, ICustomerRepository>, ICustomerService
+    private readonly ICustomerRepository _customerRepository;
+    public CustomerService(ICustomerRepository genericRepository, ICustomerRepository customerRepository) : base(genericRepository)
     {
-        private readonly ICustomerRepository _customerRepository;
-        public CustomerService(ICustomerRepository genericRepository, ICustomerRepository customerRepository) : base(genericRepository)
-        {
-            _customerRepository = customerRepository;
-        }
-        
+        _customerRepository = customerRepository;
     }
+        
 }

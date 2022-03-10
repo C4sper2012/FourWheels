@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using FourWheels.Repository.Entities;
+﻿using FourWheels.Repository.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FourWheels.Repository.Domain
