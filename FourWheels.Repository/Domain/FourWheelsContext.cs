@@ -99,7 +99,7 @@ namespace FourWheels.Repository.Domain
                 .Property(p => p.Service_ID);
 
             builder.Entity<Arbejdsordrer>()
-                .Property(p => p.Mekaniker);
+                .Property(p => p.FKMekanikerID);
 
             // builder.Entity<Arbejdsordrer>()
             //     .Property(p => p.Reservdele);
@@ -185,11 +185,13 @@ namespace FourWheels.Repository.Domain
 
             builder.Entity<Mekaiker>()
                 .HasMany<Arbejdsordrer>()
-                .WithOne();
+                .WithOne()
+                .HasForeignKey(x => x.FKMekanikerID);
 
-            builder.Entity<Servicetype>()
-                .HasOne<Arbejdsordrer>()
-                .WithMany();
+            builder.Entity<Arbejdsordrer>()
+                .HasOne<Servicetype>()
+                .WithMany()
+                .HasForeignKey(x => x.Service_ID);
 
             #endregion
 

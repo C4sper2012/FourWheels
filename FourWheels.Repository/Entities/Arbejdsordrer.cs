@@ -13,7 +13,7 @@ namespace FourWheels.Repository.Entities
         public int Service_ID { get; set; }
         public int Reservedele { get; set; }
 
-        public int Mekaniker { get; set; }
+        public int FKMekanikerID { get; set; }
         public DateTime Oprettet { get; set; } = DateTime.UtcNow;
         public DateTime TidBrugt { get; set; }
 
