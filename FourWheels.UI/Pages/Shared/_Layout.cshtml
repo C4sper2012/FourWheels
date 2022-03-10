@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/FourWheels.web.styles.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="./css/style.css" asp-append-version="true">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -18,14 +18,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="">Biler</a>
+                <a class="nav-link" href="#">Hjem</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">Arbejdsordrer</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-page="/Customer">Opret Kunde</a>
-            </li>
+            
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Opret en:
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" asp-page="/Customer">Kunde</a></li>
+                    <li><a class="dropdown-item" href="#">Bil</a></li>
+                    <li><a class="dropdown-item" asp-page="CreateAO">Arbejdsordre</a></li>
+                </ul>
+            </div>
         </ul>
     </div>
 </nav>
@@ -41,10 +46,10 @@
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 @await RenderSectionAsync("Scripts", required: false)
 </body>
