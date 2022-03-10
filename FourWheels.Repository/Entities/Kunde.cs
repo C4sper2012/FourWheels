@@ -19,6 +19,7 @@ namespace FourWheels.Repository.Entities
         public string Mobil { get; set; }
         public  string Email { get; set; }
 
+        public List<Bil> Biler { get; set; }
         public string Fuldenavn => $"{Fornavn} {Efternavn}";
     }
 }

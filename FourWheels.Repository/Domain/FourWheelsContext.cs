@@ -45,7 +45,7 @@ namespace FourWheels.Repository.Domain
                 .IsUnicode(false);
 
             builder.Entity<Bil>()
-                .Property(p => p.Ejer);
+                .Property(p => p.FKEjer);
 
             #endregion
 
@@ -99,7 +99,7 @@ namespace FourWheels.Repository.Domain
                 .Property(p => p.Service_ID);
 
             builder.Entity<Arbejdsordrer>()
-                .Property(p => p.Mekaniker);
+                .Property(p => p.FKMekanikerID);
 
             // builder.Entity<Arbejdsordrer>()
             //     .Property(p => p.Reservdele);
@@ -162,30 +162,36 @@ namespace FourWheels.Repository.Domain
             #endregion
 
             #region Relations
-
+            
             builder.Entity<Bil>()
                 .HasMany<Arbejdsordrer>()
-                .WithOne();
+                .WithOne(x => x.Bil)
+                .HasForeignKey(x => x.Bil_ID);
 
-            builder.Entity<Bil>()
-                .HasOne<Kunde>()
-                .WithMany();
-
-            builder.Entity<BrugerReservdele>()
-                .HasMany<Arbejdsordrer>()
-                .WithOne();
+            builder.Entity<Kunde>()
+                .HasMany(x => x.Biler)
+                .WithOne(x => x.Kunde)
+                .HasForeignKey(x => x.FKEjer);
 
             builder.Entity<BrugerReservdele>()
-                .HasMany<Reservdele>()
-                .WithOne();
+                .HasOne<Arbejdsordrer>()
+                .WithMany()
+                .HasForeignKey(x => x.ArbejdsordreID);
+
+            builder.Entity<BrugerReservdele>()
+                .HasOne<Reservdele>()
+                .WithMany()
+                .HasForeignKey(x => x.Reservedel_ID);
 
             builder.Entity<Mekaiker>()
                 .HasMany<Arbejdsordrer>()
-                .WithOne();
+                .WithOne()
+                .HasForeignKey(x => x.FKMekanikerID);
 
-            builder.Entity<Servicetype>()
-                .HasOne<Arbejdsordrer>()
-                .WithMany();
+            builder.Entity<Arbejdsordrer>()
+                .HasOne<Servicetype>()
+                .WithMany()
+                .HasForeignKey(x => x.Service_ID);
 
             #endregion
 
@@ -217,27 +223,27 @@ namespace FourWheels.Repository.Domain
             builder.Entity<Bil>().HasData(
                 new Bil
                 {
-                    Ejer = 1, ID = 1, Model = "Polo", Producent = "Volkswagen", Registreringsnummer = "AU79747",
+                    FKEjer = 1, ID = 1, Model = "Polo", Producent = "Volkswagen", Registreringsnummer = "AU79747",
                     Stelnummer = "WVWZZZ3CZ8E166237"
                 },
                 new Bil
                 {
-                    Ejer = 3, ID = 2, Model = "CitiGo", Producent = "Skoda", Registreringsnummer = "BK20515",
+                    FKEjer = 3, ID = 2, Model = "CitiGo", Producent = "Skoda", Registreringsnummer = "BK20515",
                     Stelnummer = "TMBZZZAAZHD604375"
                 },
                 new Bil
                 {
-                    Ejer = 2, ID = 3, Model = "Swift", Producent = "Suzuki", Registreringsnummer = "XZ12345",
+                    FKEjer = 2, ID = 3, Model = "Swift", Producent = "Suzuki", Registreringsnummer = "XZ12345",
                     Stelnummer = "SUZI1234567890ABC"
                 },
                 new Bil
                 {
-                    Ejer = 3, ID = 4, Model = "Atenza", Producent = "Mazda", Registreringsnummer = "BD84922",
+                    FKEjer = 3, ID = 4, Model = "Atenza", Producent = "Mazda", Registreringsnummer = "BD84922",
                     Stelnummer = "JMZGJ593821177805"
                 },
                 new Bil
                 {
-                    Ejer = 4, ID = 5, Model = "ID4", Producent = "Volkswagen", Registreringsnummer = "CU99104",
+                    FKEjer = 4, ID = 5, Model = "ID4", Producent = "Volkswagen", Registreringsnummer = "CU99104",
                     Stelnummer = "WVWELECTRICID404"
                 }
             );

@@ -21,17 +21,16 @@ namespace FourWheels.UI.Pages
 
         [BindProperty]
         public Kunde Kunde { get; set; }
-
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            // if (!ModelState.IsValid)
+            // {
+            //     return Page();
+            // }
             
             await _customerService.CreateAsync(Kunde);
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
 
     }
