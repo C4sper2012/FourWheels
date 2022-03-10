@@ -24,7 +24,7 @@
                 <select asp-for="Input.ValgteKunde" asp-items="Model.Input.Kunder">
                 </select>
                 <span class="text-danger" asp-validation-for="Input.ValgteKunde"></span>
-<!-- Make Razor input customer name in the fields somehow with the use of magic -->
+                <!-- Make Razor input customer name in the fields somehow with the use of magic -->
                 <input type="text" id="fname" placeholder="Fornavn"/>
                 <input type="text" id="lname" placeholder="Efternavn"/>
                 <input type="tel" id="mphone" placeholder="Mobiltelefon"/>
@@ -38,7 +38,7 @@
                 <select asp-for="Input.ValgteBil" asp-items="Model.Input.Biler">
                 </select>
                 <span class="text-danger" asp-validation-for="Input.ValgteBil"></span>
-<!-- Make Razor input car info in the fields somehow with the use of magic -->
+                <!-- Make Razor input car info in the fields somehow with the use of magic -->
                 <input type="text" id="carbrand" placeholder="Model"/>
                 <input type="text" id="carmodel" placeholder="Mærke"/>
                 <input type="text" id="vinnumber" placeholder="Stelnr"/>
@@ -62,3 +62,4 @@
         </form>
     </div>
 </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
