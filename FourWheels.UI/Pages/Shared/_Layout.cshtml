@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/FourWheels.web.styles.css" asp-append-version="true"/>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" asp-page="/Index">FourWheels</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
         @RenderBody()
     </main>
 </div>
-<footer class="border-top footer text-muted">
+<footer class="mt-auto border-top footer text-muted">
     <div class="container">
         &copy; 2022 - FourWheels.UI - <a asp-area="" asp-page="/Privacy">Privacy</a>
     </div>
