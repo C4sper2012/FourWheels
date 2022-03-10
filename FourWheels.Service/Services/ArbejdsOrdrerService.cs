@@ -1,24 +1,15 @@
-﻿using FourWheels.Service.Interfaces;
+﻿using FourWheels.Repository.Entities;
+using FourWheels.Repository.Interfaces;
+using FourWheels.Repository.Repository;
+using FourWheels.Service.Interfaces;
 
 namespace FourWheels.Service.Services
 {
-    public class ArbejdsOrdrerService : IArbejdsOrdrerService
+    public class ArbejdsOrdrerService : GenericService<Arbejdsordrer, IArbejdsOrdrerRepository>, IArbejdsOrdrerService
     {
-        public Task CreateAsync(IArbejdsOrdrerService entity)
+        public ArbejdsOrdrerService(IArbejdsOrdrerRepository genericRepository) : base(genericRepository)
         {
-            throw new NotImplementedException();
-        }
-        public Task UpdateAsync(IArbejdsOrdrerService entity)
-        {
-            throw new NotImplementedException();
-        }
-        public Task<List<IArbejdsOrdrerService>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-        public Task<IArbejdsOrdrerService> GetByIdAsync(object id)
-        {
-            throw new NotImplementedException();
+            
         }
     }
 }
