@@ -29,7 +29,7 @@ namespace FourWheels.Service.Services
 
         public Task<List<Servicetype>> GetAllAsync()
         {
-            return _db.Biler.ToListAsync();
+            return _db.Servicetyper.ToListAsync();
         }
 
         public Task<Servicetype> GetByIdAsync(object id)
