@@ -2,7 +2,7 @@
 
 namespace FourWheels.Repository.Interfaces;
 
-public interface IBilRepository : IGenericRepository<Bil>
+public interface IServiceTypeRepository : IGenericRepository<Servicetype>
 {
     
 }

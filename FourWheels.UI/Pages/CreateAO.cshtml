@@ -1,0 +1,30 @@
+﻿@page
+@model FourWheels.web.Pages.CreateAO
+
+@{
+    Layout = "Shared/_Layout";
+}
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Input.ValgteBil"></label>
+        <select asp-for="Input.ValgteBil" asp-items="Model.Input.Biler">
+            
+        </select>
+        <span class="text-danger" asp-validation-for="Input.ValgteBil"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.ValgteKunde"></label>
+        <select asp-for="Input.ValgteKunde" asp-items="Model.Input.Kunder">
+            
+        </select>
+        <span class="text-danger" asp-validation-for="Input.ValgteKunde"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Input.ValgteServiceType"></label>
+        <select asp-for="Input.ValgteServiceType" asp-items="Model.Input.ServiceTyper">
+            
+        </select>
+        <span class="text-danger" asp-validation-for="Input.ValgteServiceType"></span>
+    </div>
+</form>
