@@ -1,5 +1,4 @@
 using FourWheels.Repository.Domain;
-using FourWheels.Repository.Entities;
 using FourWheels.Repository.Interfaces;
 using FourWheels.Repository.Repository;
 using FourWheels.Service.Interfaces;
@@ -14,16 +13,24 @@ builder.Services.AddScoped<IArbejdsOrdrerService, ArbejdsOrdrerService>();
 
 builder.Services.AddScoped<IBilService, BilService>();
 builder.Services.AddScoped<IKundeService, KundeService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
 builder.Services.AddScoped<IServiceTypeService, ServiceTypeService>();
 
 builder.Services.AddScoped<IBilRepository, BilRepository>();
 builder.Services.AddScoped<IKundeRepository, KundeRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();
 
 builder.Services.AddDbContext<FourWheelsContext>(option =>
 {
     option.UseInMemoryDatabase("Test");
 });
+
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IBilService, BilService>();
+builder.Services.AddScoped<IBilRepository, BilRepository>();
 
 WebApplication app = builder.Build();
 

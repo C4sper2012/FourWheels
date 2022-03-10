@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FourWheels.Repository.Entities
+﻿namespace FourWheels.Repository.Entities
 {
     public class Kunde
     {
@@ -19,6 +13,7 @@ namespace FourWheels.Repository.Entities
         public string Mobil { get; set; }
         public  string Email { get; set; }
 
+        public List<Bil> Biler { get; set; }
         public string Fuldenavn => $"{Fornavn} {Efternavn}";
     }
 }

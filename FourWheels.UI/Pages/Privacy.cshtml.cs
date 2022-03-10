@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FourWheels.web.Pages
+namespace FourWheels.UI.Pages
 {
     public class PrivacyModel : PageModel
     {

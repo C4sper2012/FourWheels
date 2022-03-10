@@ -28,9 +28,9 @@ namespace FourWheels.Service.Services
         }
 
         public async Task<List<T>> GetAllAsync()=>
-            await _genericRepository.GetAllAsync();
+        await _genericRepository.GetAllAsync();
 
         public Task<T> GetByIdAsync(object id)=>
-            _genericRepository.GetByIdAsync(id);
+        _genericRepository.GetByIdAsync(id);
     }
 }
