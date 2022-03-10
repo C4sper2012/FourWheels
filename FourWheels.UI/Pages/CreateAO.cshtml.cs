@@ -14,9 +14,9 @@ namespace FourWheels.web.Pages
             public SelectList Biler { get; set; }
             public SelectList Kunder { get; set; }
             public SelectList ServiceTyper { get; set; }
-            
+
             [BindProperty]
-            public Bil ValgteBil { get; set; }
+            public Bil ValgteBil { get; set; } = new();
             [BindProperty]
             public Kunde ValgteKunde { get; set; }
             [BindProperty]
@@ -45,7 +45,7 @@ namespace FourWheels.web.Pages
             List<Bil> biler = await _bilService.GetAllAsync();
             List<Servicetype> serviceTyper = await _serviceTypeService.GetAllAsync();
             
-            Input.Biler = new SelectList(biler, "Id", "Registreringsnummer");
+            Input.Biler = new SelectList(biler, "ID", "Registreringsnummer");
             Input.ServiceTyper = new SelectList(serviceTyper, "Id", "ServiceType");
         }
         public async Task OnGetKundeSelectedAsync(int id)
