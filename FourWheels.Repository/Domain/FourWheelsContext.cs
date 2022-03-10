@@ -16,7 +16,6 @@ namespace FourWheels.Repository.Domain
 
         public FourWheelsContext(DbContextOptions options) : base(options)
         {
-            
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -241,6 +240,15 @@ namespace FourWheels.Repository.Domain
                     Ejer = 4, ID = 5, Model = "ID4", Producent = "Volkswagen", Registreringsnummer = "CU99104",
                     Stelnummer = "WVWELECTRICID404"
                 }
+            );
+
+            builder.Entity<Servicetype>().HasData(
+                new Servicetype { Id = 1, ServiceType = "Olieskift" },
+                new Servicetype { Id = 2, ServiceType = "Almindelig service" },
+                new Servicetype { Id = 3, ServiceType = "Bremseeftersyn" },
+                new Servicetype { Id = 4, ServiceType = "Synstjek" },
+                new Servicetype { Id = 5, ServiceType = "Karosseriskade" },
+                new Servicetype { Id = 6, ServiceType = "Hjulskift" }
             );
 
             #endregion
