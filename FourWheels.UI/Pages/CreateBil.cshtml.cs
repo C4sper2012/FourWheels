@@ -23,8 +23,10 @@ namespace FourWheels.web.Pages
         [BindProperty, Required]
         public Bil Bil { get; set; }
 
+        [BindProperty(SupportsGet = true)]
         public List<Kunde> Kunder { get; set; } = new List<Kunde>();
 
+        [BindProperty]
         public SelectList SelectKunde { get; set; }
 
         public async Task OnGet()
