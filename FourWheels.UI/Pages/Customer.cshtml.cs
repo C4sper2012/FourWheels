@@ -3,7 +3,7 @@ using FourWheels.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FourWheels.web.Pages
+namespace FourWheels.UI.Pages
 {
     public class CreateModel : PageModel
     {
@@ -21,10 +21,6 @@ namespace FourWheels.web.Pages
 
         [BindProperty]
         public Kunde Kunde { get; set; }
-
-        [BindProperty]
-        public IFormFile ImageFile { get; set; }
-
 
         public async Task<IActionResult> OnPostAsync()
         {

@@ -1,6 +1,9 @@
-﻿namespace FourWheels.Service.Interfaces
+﻿using FourWheels.Repository.Entities;
+using FourWheels.Service.Services;
+
+namespace FourWheels.Service.Interfaces
 {
-    public class ICustomerService
+    public interface ICustomerService : IGenericService<Kunde>
     {
         
     }
