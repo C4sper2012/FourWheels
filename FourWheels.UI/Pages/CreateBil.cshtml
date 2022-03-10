@@ -15,23 +15,23 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label class="control-label">Registreringsnummer</label>
-                <input asp-for="Bil.Registreringsnummer" class="form-control" />
-                <span class="text-danger" asp-validation-for="Bil.Registreringsnummer"></span>
+                <input asp-for="@Model.Bil.Registreringsnummer" class="form-control" />
+                <span class="text-danger" asp-validation-for="@Model.Bil.Registreringsnummer"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Stelnummer</label>
-                <input asp-for="Bil.Stelnummer" class="form-control" />
-                <span class="text-danger" asp-validation-for="Bil.Stelnummer"></span>
+                <input asp-for="@Model.Bil.Stelnummer" class="form-control" />
+                <span class="text-danger" asp-validation-for="@Model.Bil.Stelnummer"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Producent</label>
-                <input asp-for="Bil.Producent" class="form-control" />
-                <span class="text-danger" asp-validation-for="Bil.Producent"></span>
+                <input asp-for="@Model.Bil.Producent" class="form-control" />
+                <span class="text-danger" asp-validation-for="@Model.Bil.Producent"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Model</label>
-                <input asp-for="Bil.Model" class="form-control" />
-                <span class="text-danger" asp-validation-for="Bil.Model"></span>
+                <input asp-for="@Model.Bil.Model" class="form-control" />
+                <span class="text-danger" asp-validation-for="@Model.Bil.Model"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Ejer</label>
