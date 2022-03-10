@@ -34,7 +34,7 @@ namespace FourWheels.web.Pages
                     Stelnummer = Bil.Stelnummer,
                     Producent = Bil.Producent,
                     Model = Bil.Model,
-                    Ejer = Bil.Ejer,
+                    FKEjer = Bil.FKEjer,
 
                 };
                 await _service.CreateAsync(bil);

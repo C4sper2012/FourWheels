@@ -21,7 +21,7 @@ namespace FourWheels.Repository.Entities
         public Mekaiker Mekaiker { get; set; }
         public Bil Bil { get; set; }
         public Servicetype Servicetype { get; set; }
-        // public Reservdele Reservdele { get; set; }
+        public List<BrugerReservdele> BrugteReservdele { get; set; }
 
     }
 }
