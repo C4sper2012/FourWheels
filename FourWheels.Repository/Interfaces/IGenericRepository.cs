@@ -1,4 +1,7 @@
-﻿namespace FourWheels.Repository.Interfaces
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace FourWheels.Repository.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {
