@@ -1,19 +1,19 @@
+using System.ComponentModel.DataAnnotations;
 using FourWheels.Repository.Entities;
 using FourWheels.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
 
-namespace FourWheels.web.Pages
+namespace FourWheels.UI.Pages
 {
     public class CreateBilModel : PageModel
     {
         private readonly IBilService _bilService;
-        private readonly ICustomerService _customerService;
+        private readonly IKundeService _customerService;
 
 
-        public CreateBilModel(IBilService service, ICustomerService customerService)
+        public CreateBilModel(IBilService service, IKundeService customerService)
         {
             _bilService = service;
             _customerService = customerService;
