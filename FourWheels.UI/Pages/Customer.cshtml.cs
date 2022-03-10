@@ -7,11 +7,11 @@ namespace FourWheels.UI.Pages
 {
     public class CreateModel : PageModel
     {
-        private readonly ICustomerService _customerService;
+        private readonly IKundeService _kundeService;
         
-        public CreateModel(ICustomerService customerService)
+        public CreateModel(IKundeService kundeService)
         {
-            _customerService = customerService;
+            _kundeService = kundeService;
         }
 
         public IActionResult OnGet()
@@ -28,7 +28,7 @@ namespace FourWheels.UI.Pages
             //     return Page();
             // }
             
-            await _customerService.CreateAsync(Kunde);
+            await _kundeService.CreateAsync(Kunde);
 
             return RedirectToPage("/Index");
         }
