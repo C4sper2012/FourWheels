@@ -1,4 +1,5 @@
 ﻿using FourWheels.Repository.Entities;
+using FourWheels.Repository.Interfaces;
 using FourWheels.Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,26 +9,13 @@ using System.Threading.Tasks;
 
 namespace FourWheels.Service.Services
 {
-    public class BilService : IBilService
+    public class BilService : GenericService<Bil, IBilRepository>, IBilService
     {
-        public Task CreateAsync(Bil entity)
+        private readonly IBilRepository _bilRepository;
+        public BilService(IBilRepository GenericRepository) : base(GenericRepository)
         {
-            throw new NotImplementedException();
+            _bilRepository = GenericRepository;
         }
 
-        public Task<List<Bil>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Bil> GetByIdAsync(object id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAsync(Bil entity)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

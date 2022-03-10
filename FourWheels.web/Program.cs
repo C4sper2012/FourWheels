@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddScoped<IBilService, BilService>();
+builder.Services.AddScoped<IBilRepository, BilRepository>();
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<FourWheelsContext>(option =>
@@ -14,9 +17,6 @@ builder.Services.AddDbContext<FourWheelsContext>(option =>
     option.UseInMemoryDatabase("Test");
 });
 
-
-builder.Services.AddScoped<IBilService, BilService>();
-builder.Services.AddScoped<IBilRepository, BilRepository>();
 
 WebApplication app = builder.Build();
 
