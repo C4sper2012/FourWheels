@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FourWheels.web.Pages
+namespace FourWheels.UI.Pages
 {
     public class IndexModel : PageModel
     {
