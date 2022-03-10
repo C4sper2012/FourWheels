@@ -101,8 +101,8 @@ namespace FourWheels.Repository.Domain
             builder.Entity<Arbejdsordrer>()
                 .Property(p => p.Mekaniker);
 
-            builder.Entity<Arbejdsordrer>()
-                .Property(p => p.Reservdele);
+            // builder.Entity<Arbejdsordrer>()
+            //     .Property(p => p.Reservdele);
 
             builder.Entity<Arbejdsordrer>()
                 .Property(p => p.Oprettet);

@@ -1,10 +1,14 @@
 using FourWheels.Repository.Domain;
+using FourWheels.Service.Interfaces;
+using FourWheels.Service.Services;
 using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<IArbejdsOrdrerService, ArbejdsOrdrerService>();
+builder.Services.AddScoped<IBilService, BilService>();
 builder.Services.AddDbContext<FourWheelsContext>(option =>
 {
     option.UseInMemoryDatabase("Test");

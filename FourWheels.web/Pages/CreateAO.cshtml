@@ -7,8 +7,10 @@
 
 <form method="post">
     <div class="form-group">
-        <label asp-for="ArbejdsOrdrer.TidBrugt"></label>
-        <input asp-for="ArbejdsOrdrer.TidBrugt" class="form-control">
-        <span class="text-danger" asp-validation-for="ArbejdsOrdrer.TidBrugt"></span>
+        <label asp-for="ValgteBil"></label>
+        <select asp-for="ValgteBil" asp-items="Model.Biler">
+            
+        </select>
+        <span class="text-danger" asp-validation-for="ValgteBil"></span>
     </div>
 </form>
