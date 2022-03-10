@@ -2,29 +2,38 @@ using FourWheels.Repository.Entities;
 using FourWheels.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace FourWheels.web.Pages
 {
     public class CreateBilModel : PageModel
     {
-        private readonly IBilService _service;
+        private readonly IBilService _bilService;
+        private readonly ICustomerService _customerService;
 
 
-        public CreateBilModel(IBilService service)
+        public CreateBilModel(IBilService service, ICustomerService customerService)
         {
-            _service = service;
+            _bilService = service;
+            _customerService = customerService;
         }
 
 
-        [BindProperty]
+        [BindProperty, Required]
         public Bil Bil { get; set; }
 
-        public async void OnGet()
+        public List<Kunde> Kunder { get; set; } = new List<Kunde>();
+
+        public SelectList SelectKunde { get; set; }
+
+        public async Task OnGet()
         {
-            await _service.GetAllAsync();
+            Kunder = await _customerService.GetAllAsync();
+            SelectKunde = new SelectList(Kunder);
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task OnPost()
         {
             if (ModelState.IsValid)
             {
@@ -37,9 +46,9 @@ namespace FourWheels.web.Pages
                     Ejer = Bil.Ejer,
 
                 };
-                await _service.CreateAsync(bil);
+                await _bilService.CreateAsync(bil);
             }
-            return RedirectToPage();
+            await OnGet();
         }
     }
 }

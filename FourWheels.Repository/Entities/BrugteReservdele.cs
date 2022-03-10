@@ -12,7 +12,7 @@ namespace FourWheels.Repository.Entities
         public int Reservedel_ID { get; set; }
         public int Antal { get; set; }
 
-       // public Reservdele Reservdele { get; set; }
+        public Reservdele Reservdele { get; set; }
 
     }
 }
