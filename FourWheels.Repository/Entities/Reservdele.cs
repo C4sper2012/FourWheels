@@ -10,5 +10,7 @@ namespace FourWheels.Repository.Entities
     {
         public int Id { get; set; }
         public string Reservedel { get; set; }
+
+        public List<BrugerReservdele> BrugteReserveDele { get; set; }
     }
 }
