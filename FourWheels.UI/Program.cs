@@ -17,6 +17,8 @@ builder.Services.AddDbContext<FourWheelsContext>(option =>
 
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IBilService, BilService>();
+builder.Services.AddScoped<IBilRepository, BilRepository>();
 
 WebApplication app = builder.Build();
 
