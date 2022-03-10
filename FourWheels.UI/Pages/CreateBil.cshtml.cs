@@ -29,7 +29,6 @@ namespace FourWheels.web.Pages
         [BindProperty]
         public Kunde Kunde { get; set; }
 
-        [BindProperty]
         public SelectList SelectKunde { get; set; }
 
         public async Task OnGet()
