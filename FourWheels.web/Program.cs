@@ -9,6 +9,8 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IArbejdsOrdrerService, ArbejdsOrdrerService>();
 builder.Services.AddScoped<IBilService, BilService>();
+builder.Services.AddScoped<IKundeService, KundeService>();
+builder.Services.AddScoped<IServiceTypeService, ServiceTypeService>();
 builder.Services.AddDbContext<FourWheelsContext>(option =>
 {
     option.UseInMemoryDatabase("Test");
