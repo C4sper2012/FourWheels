@@ -1,4 +1,6 @@
 using FourWheels.Repository.Domain;
+using FourWheels.Repository.Interfaces;
+using FourWheels.Repository.Repository;
 using FourWheels.Service.Interfaces;
 using FourWheels.Service.Services;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +16,7 @@ builder.Services.AddDbContext<FourWheelsContext>(option =>
 });
 
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 
 WebApplication app = builder.Build();
 
