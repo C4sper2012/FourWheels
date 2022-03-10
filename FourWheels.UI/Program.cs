@@ -9,13 +9,13 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddScoped<IArbejdsOrdrerService, ArbejdsOrdrerService>();
 
+builder.Services.AddScoped<IArbejdsOrdrerService, ArbejdsOrdrerService>();
 builder.Services.AddScoped<IBilService, BilService>();
 builder.Services.AddScoped<IKundeService, KundeService>();
-
 builder.Services.AddScoped<IServiceTypeService, ServiceTypeService>();
 
+builder.Services.AddScoped<IArbejdsOrdrerRepository, ArbejdsOrdrerRepository>();
 builder.Services.AddScoped<IBilRepository, BilRepository>();
 builder.Services.AddScoped<IKundeRepository, KundeRepository>();
 builder.Services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();

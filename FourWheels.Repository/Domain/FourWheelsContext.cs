@@ -15,6 +15,8 @@ namespace FourWheels.Repository.Domain
 
         public FourWheelsContext(DbContextOptions options) : base(options)
         {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
