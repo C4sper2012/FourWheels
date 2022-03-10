@@ -35,10 +35,8 @@
             </div>
             <div class="form-group">
                 <label class="control-label">Ejer</label>
-                <select class="form-select" size="8" asp-items="@Model.SelectKunde">
+                <select class="form-select" size="8" asp-for="@Model.Kunde" asp-items="@Model.SelectKunde">
                     <option selected>Vælg Kunde</option>
-                    
-                    
                 </select>
                 <span class="text-danger"></span>
             </div>

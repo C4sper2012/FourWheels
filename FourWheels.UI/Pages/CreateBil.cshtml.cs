@@ -24,7 +24,10 @@ namespace FourWheels.web.Pages
         public Bil Bil { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public List<Kunde> Kunder { get; set; } = new List<Kunde>();
+        public List<Kunde> Kunder { get; set; }
+
+        [BindProperty]
+        public Kunde Kunde { get; set; }
 
         [BindProperty]
         public SelectList SelectKunde { get; set; }
@@ -32,7 +35,7 @@ namespace FourWheels.web.Pages
         public async Task OnGet()
         {
             Kunder = await _customerService.GetAllAsync();
-            SelectKunde = new SelectList(Kunder);
+            SelectKunde = new SelectList(Kunder, "Id", "Fuldenavn");
         }
 
         public async Task OnPost()
@@ -45,7 +48,7 @@ namespace FourWheels.web.Pages
                     Stelnummer = Bil.Stelnummer,
                     Producent = Bil.Producent,
                     Model = Bil.Model,
-                    FKEjer = Bil.FKEjer,
+                    FKEjer = Kunde.Id
 
                 };
                 await _bilService.CreateAsync(bil);
