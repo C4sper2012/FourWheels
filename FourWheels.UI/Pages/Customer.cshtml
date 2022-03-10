@@ -1,0 +1,82 @@
+﻿@page
+@model FourWheels.UI.Pages.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Kunde</h4>
+<hr/>
+
+<form method="post" enctype="multipart/form-data" class="row">
+    <div class="col-6">
+        <div class="form-group">
+            <label asp-for="Kunde.Fornavn" class="control-label"></label>
+            <input asp-for="Kunde.Fornavn" class="form-control"/>
+            <span asp-validation-for="Kunde.Fornavn" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Kunde.Efternavn" class="control-label"></label>
+            <input asp-for="Kunde.Efternavn" class="form-control"/>
+            <span asp-validation-for="Kunde.Efternavn" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Kunde.Email" class="control-label"></label>
+            <input asp-for="Kunde.Email" class="form-control" type="email"/>
+            <span asp-validation-for="Kunde.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Kunde.Mobil" class="control-label"></label>
+            <input asp-for="Kunde.Mobil" class="form-control" type="tel"/>
+            <span asp-validation-for="Kunde.Mobil" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Kunde.Telefon" class="control-label"></label>
+            <input asp-for="Kunde.Telefon" class="form-control" type="tel"/>
+            <span asp-validation-for="Kunde.Telefon" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label asp-for="Kunde.Bynavn" class="control-label"></label>
+            <input asp-for="Kunde.Bynavn" class="form-control"/>
+            <span asp-validation-for="Kunde.Bynavn" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Kunde.Postnummer" class="control-label"></label>
+            <input asp-for="Kunde.Postnummer" class="form-control" type="number"/>
+            <span asp-validation-for="Kunde.Postnummer" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Kunde.VejNavn" class="control-label"></label>
+            <input asp-for="Kunde.VejNavn" class="form-control"/>
+            <span asp-validation-for="Kunde.VejNavn" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Kunde.Vej_Nummer" class="control-label"></label>
+            <input asp-for="Kunde.Vej_Nummer" class="form-control"/>
+            <span asp-validation-for="Kunde.Vej_Nummer" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Kunde.Biler" class="control-label"></label>
+            <input asp-for="Kunde.Biler" class="form-control"/>
+            <span asp-validation-for="Kunde.Biler" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary"/>
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+</form>
+
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

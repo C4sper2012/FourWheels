@@ -4,11 +4,10 @@ using FourWheels.Repository.Interfaces;
 
 namespace FourWheels.Repository.Repository
 {
-    public class KundeRepository : GenericRepository<Kunde>, IKundeRepository
+    public class CustomerRepository : GenericRepository<Kunde>, ICustomerRepository
     {
-        public KundeRepository(FourWheelsContext fourWheelsContext) : base(fourWheelsContext)
+        public CustomerRepository(FourWheelsContext fourWheelsContext) : base(fourWheelsContext)
         {
-        
         }
     }
 }

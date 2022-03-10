@@ -1,0 +1,52 @@
+﻿@page
+@model FourWheels.web.Pages.CreateBilModel
+@{
+    ViewData["Title"] = "Opret bil";
+}
+
+
+<h1 class="mt-3">Opret bil</h1>
+
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Registreringsnummer</label>
+                <input asp-for="Bil.Registreringsnummer" class="form-control" />
+                <span class="text-danger" asp-validation-for="Bil.Registreringsnummer"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Stelnummer</label>
+                <input asp-for="Bil.Stelnummer" class="form-control" />
+                <span class="text-danger" asp-validation-for="Bil.Stelnummer"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Producent</label>
+                <input asp-for="Bil.Producent" class="form-control" />
+                <span class="text-danger" asp-validation-for="Bil.Producent"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Model</label>
+                <input asp-for="Bil.Model" class="form-control" />
+                <span class="text-danger" asp-validation-for="Bil.Model"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ejer</label>
+                <select class="form-select" size="8" asp-items="@Model.SelectKunde">
+                    <option selected>Vælg Kunde</option>
+                    
+                    
+                </select>
+                <span class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Opret bil</button>
+        </form>
+    </div>
+</div>
+
+
+
+
