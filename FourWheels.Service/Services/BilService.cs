@@ -1,21 +1,36 @@
-﻿using FourWheels.Repository.Entities;
-using FourWheels.Repository.Interfaces;
+﻿using FourWheels.Repository.Domain;
+using FourWheels.Repository.Entities;
+using FourWheels.Repository.Repository;
 using FourWheels.Service.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace FourWheels.Service.Services
 {
-    public class BilService : GenericService<Bil, IBilRepository>, IBilService
+    public class BilService : IGenericService<Bil>, IBilService
     {
-        private readonly IBilRepository _bilRepository;
-        public BilService(IBilRepository GenericRepository) : base(GenericRepository)
+        #region Bil
+        private readonly FourWheelsContext _db;
+        public BilService(FourWheelsContext db)
         {
-            _bilRepository = GenericRepository;
+            _db = db;
         }
+        #endregion
 
+        public Task CreateAsync(Bil entity)
+        {
+            throw new NotImplementedException();
+        }
+        public Task UpdateAsync(Bil entity)
+        {
+            throw new NotImplementedException();
+        }
+        public Task<List<Bil>> GetAllAsync()
+        {
+            return _db.Biler.ToListAsync();
+        }
+        public Task<Bil> GetByIdAsync(object id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
