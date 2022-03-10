@@ -1,6 +1,8 @@
-﻿namespace FourWheels.Service.Interfaces
+﻿using FourWheels.Repository.Entities;
+
+namespace FourWheels.Service.Interfaces
 {
-    public interface IArbejdsOrdrerService : IGenericService<IArbejdsOrdrerService>
+    public interface IArbejdsOrdrerService : IGenericService<Arbejdsordrer>
     {
     
     }

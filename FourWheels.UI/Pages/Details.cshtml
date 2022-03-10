@@ -1,4 +1,5 @@
-﻿@page
+﻿@page "{id}"
+@using FourWheels.Repository.Entities
 @model FourWheels.UI.Pages.Details
 @{
     ViewData["Title"] = "Details";
@@ -8,10 +9,10 @@
   <hr>
   <div class="row">
     <div class="col-6">
-      <h1>BK 20 515</h1>
+      <h1>@Model.Bil.Registreringsnummer</h1>
     </div>
       <div class="col-6">
-      <h1>Skoda Citigo 1,0</h1>
+      <h1>@Model.Bil.Model</h1>
       </div>
 
   </div>
@@ -22,20 +23,18 @@
         <img class="mr-3" src="images/115X115.gif" alt="Generic placeholder image">
         <div class="media-body">
           <h5 class="mt-0">Skal udføres:&nbsp;</h5>
-          <p> - 50.000 km service<br>
-          - Bremseeftersyn</p>
-          <p>&nbsp;</p>
+          <p>@Model.NyesteArbejdsOrder.Servicetype.ServiceType</p>
         </div>
       </div>
     </div>
     <div class="col-md-4 col-sm-12">
       <div class="row justify-content-md-around m-1">
         <address>
-          <strong>Jan Andreasen</strong><br>
-          Tved 128<br>
-          6270 Tønder<br>
-          <abbr title="Phone">T:</abbr> &nbsp;2213 8860<br>
-          <a href="mailto:#">jan@tved.me</a>
+          <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.Fornavn</strong><br>
+          <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.Efternavn</strong><br>
+          <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.Bynavn</strong><br>
+          <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.VejNavn</strong><br>
+          <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.Email</strong><br>
         </address>
       </div>
     </div>
@@ -44,13 +43,14 @@
   <div class="row">
     <div class="col-md-6 col-sm-12">
       <h2>Historik</h2>
-      <hr>
+              <hr>
+      @foreach (Arbejdsordrer ao in Model.ArbejdsOrdrere)
+      {
+        <h5><span class="badge badge-secondary">@ao.Servicetype.ServiceType</span></h5>
 
-      <h5><span class="badge badge-secondary">40.000 km service</span></h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam fugit deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione distinctio nihil dignissimos esse!</p>
+        <h5><span class="badge badge-secondary">30.000 km service</span></h5>
+      }
 
-      <h5><span class="badge badge-secondary">30.000 km service</span></h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam fugit deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione distinctio nihil dignissimos esse!</p>
     </div>
     <div class="col-md-6 col-sm-12">
       <h2>Servicehistorik</h2>

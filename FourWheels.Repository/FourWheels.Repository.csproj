@@ -16,4 +16,9 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Interfaces\ICustomerRepository.cs" />
+      <Compile Remove="Repository\CustomerRepository.cs" />
+    </ItemGroup>
+
 </Project>
