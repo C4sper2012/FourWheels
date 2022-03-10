@@ -1,5 +1,4 @@
-﻿using FourWheels.Repository.Entities;
-using FourWheels.Service.Interfaces;
+﻿using FourWheels.Service.Interfaces;
 
 namespace FourWheels.Service.Services
 {
