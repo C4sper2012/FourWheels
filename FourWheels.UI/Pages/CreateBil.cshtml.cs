@@ -37,21 +37,15 @@ namespace FourWheels.UI.Pages
             SelectKunde = new SelectList(Kunder, "Id", "Fuldenavn");
         }
 
-        public async Task OnPost()
+        public async Task OnPost(Bil bil)
         {
-            if (ModelState.IsValid)
-            {
-                Bil bil = new Bil
-                {
-                    Registreringsnummer = Bil.Registreringsnummer,
-                    Stelnummer = Bil.Stelnummer,
-                    Producent = Bil.Producent,
-                    Model = Bil.Model,
-                    FKEjer = Kunde.Id
-
-                };
-                await _bilService.CreateAsync(bil);
-            }
+            //ModelState.ClearValidationState(nameof(bil));
+            // TryValidateModel(bil);
+            // if (!ModelState.IsValid)
+            // {
+            //     await _bilService.CreateAsync(bil);
+            // }
+            await _bilService.CreateAsync(bil);
             await OnGet();
         }
     }
