@@ -11,16 +11,12 @@ namespace FourWheels.UI.Pages
     {
         private readonly IBilService _bilService;
         private readonly IKundeService _customerService;
-        private readonly IEmailService _emailService;
-        private readonly IArbejdsOrdrerService _arbejdsOrdrerService;
 
 
-        public CreateBilModel(IBilService service, IKundeService customerService, IEmailService emailService, IArbejdsOrdrerService arbejdsOrdrerService)
+        public CreateBilModel(IBilService service, IKundeService customerService)
         {
             _bilService = service;
             _customerService = customerService;
-            _emailService = emailService;
-            _arbejdsOrdrerService = arbejdsOrdrerService;
         }
 
 
@@ -43,10 +39,7 @@ namespace FourWheels.UI.Pages
 
         public async Task OnPost(Bil bil)
         {
-            Arbejdsordrer arbejdsordrer = await _arbejdsOrdrerService.GetByIdAsync(1);
-
             await _bilService.CreateAsync(bil);
-            await _emailService.SendEmail(arbejdsordrer);
             await OnGet();
         }
     }
