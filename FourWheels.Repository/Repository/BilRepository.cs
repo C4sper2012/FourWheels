@@ -12,8 +12,11 @@ namespace FourWheels.Repository.Repository
         {
             _dbContext = fourWheelsContext;
         }
-
-        public async Task<Bil> GetById(int id) 
-            => await _dbContext.Biler.FirstOrDefaultAsync(x => x.PKBilID == id);
+        public Task<List<Bil>> GetAllWithKundeAsync()
+        {
+            return _dbContext.Biler
+                             .Include(b => b.Kunde)
+                             .ToListAsync();
+        }
     }
 }
