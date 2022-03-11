@@ -32,7 +32,7 @@ namespace FourWheels.web.Pages
 
             Input.Biler = biler.Select(b => new SelectListItem($"{b.Registreringsnummer} - {b.Kunde.Fuldenavn} ({b.Producent} {b.Model})", b.PKBilID.ToString()))
                                .ToList();
-            Input.ServiceTyper = new SelectList(serviceTyper, "Id", "ServiceType");
+            Input.ServiceTyper = new SelectList(serviceTyper, nameof(Servicetype.PKServicetypeID), nameof(Servicetype.ServiceType));
         }
         public async Task<IActionResult> OnPostAsync()
         {
