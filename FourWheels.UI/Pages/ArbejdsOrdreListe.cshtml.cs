@@ -19,7 +19,8 @@ namespace FourWheels.UI.Pages
 
         public async Task OnGet()
         {
-            Arbejdsordrers = await _arbejdsOrdrerService.GetAllAsync();
+            Arbejdsordrers = await _arbejdsOrdrerService.GetAllAOIncludeMek();
+            // Arbejdsordrers = await _arbejdsOrdrerService.GetAllAsync();
         }
     }
 }

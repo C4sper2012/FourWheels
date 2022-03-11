@@ -186,12 +186,12 @@ namespace FourWheels.Repository.Domain
 
             builder.Entity<Mekaiker>()
                 .HasMany<Arbejdsordrer>()
-                .WithOne()
-                .HasForeignKey(x => x.FKMekanikerID).IsRequired(false);
+                .WithOne(x => x.Mekaiker)
+                .HasForeignKey(x => x.FKMekanikerID);
 
-            builder.Entity<Arbejdsordrer>()
-                .HasOne<Servicetype>()
-                .WithMany()
+            builder.Entity<Servicetype>()
+                .HasMany<Arbejdsordrer>()
+                .WithOne(x => x.Servicetype)
                 .HasForeignKey(x => x.FKServiceID);
 
             builder.Entity<Arbejdsordrer>().HasKey(x => x.PKArbejdsordreID);
