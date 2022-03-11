@@ -9,30 +9,27 @@ namespace FourWheels.UI.Pages
     public class CreateModel : PageModel
     {
         private readonly IKundeService _kundeService;
-        private readonly IBilService _bilService;
-        public CreateModel(IKundeService kundeService, IBilService bilService)
+        public CreateModel(IKundeService kundeService)
         {
             _kundeService = kundeService;
-            _bilService = bilService;
         }
 
-        public async Task<IActionResult> OnGet()
+        public void OnGet()
         {
-            BilList = (await _bilService.GetAllAsync()).Where(x => false).ToList();
-            return Page();
         }
 
         [BindProperty]
         public Kunde Kunde { get; set; }
-
-        public List<Bil> BilList { get; set; }
+        
+        [BindProperty] 
+        public Bil Bil { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
             // if (!ModelState.IsValid)
             // {
             //     return Page();
             // }
-            
+            Kunde.Biler = new List<Bil> {Bil};
             await _kundeService.CreateAsync(Kunde);
 
             return RedirectToPage("/Index");

@@ -34,7 +34,7 @@ namespace FourWheels.UI.Pages
         public async Task OnGet()
         {
             Kunder = await _customerService.GetAllAsync();
-            SelectKunde = new SelectList(Kunder, "Id", "Fuldenavn");
+            SelectKunde = new SelectList(Kunder, "PKKundeID", "Fuldenavn");
         }
 
         public async Task OnPost(Bil bil)
