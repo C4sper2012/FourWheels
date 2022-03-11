@@ -39,12 +39,6 @@ namespace FourWheels.UI.Pages
 
         public async Task OnPost(Bil bil)
         {
-            //ModelState.ClearValidationState(nameof(bil));
-            // TryValidateModel(bil);
-            // if (!ModelState.IsValid)
-            // {
-            //     await _bilService.CreateAsync(bil);
-            // }
             await _bilService.CreateAsync(bil);
             await OnGet();
         }
