@@ -2,7 +2,7 @@
 {
     public class Servicetype
     {
-        public int Id { get; set; }
+        public int PKServicetypeID { get; set; }
         public string ServiceType { get; set; }
     }
 }
