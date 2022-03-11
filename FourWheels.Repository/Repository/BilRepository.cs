@@ -1,6 +1,7 @@
 ﻿using FourWheels.Repository.Domain;
 using FourWheels.Repository.Entities;
 using FourWheels.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace FourWheels.Repository.Repository
 {
@@ -11,5 +12,8 @@ namespace FourWheels.Repository.Repository
         {
             _dbContext = fourWheelsContext;
         }
+
+        public async Task<Bil> GetById(int id) 
+            => await _dbContext.Biler.FirstOrDefaultAsync(x => x.ID == id);
     }
 }
