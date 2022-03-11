@@ -9,6 +9,20 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+#if DEBUG
+
+builder.Services.AddSingleton<IArbejdsOrdrerService, ArbejdsOrdrerService>();
+builder.Services.AddSingleton<IBilService, BilService>();
+builder.Services.AddSingleton<IKundeService, KundeService>();
+builder.Services.AddSingleton<IServiceTypeService, ServiceTypeService>();
+
+builder.Services.AddSingleton<IArbejdsOrdrerRepository, ArbejdsOrdrerRepository>();
+builder.Services.AddSingleton<IBilRepository, BilRepository>();
+builder.Services.AddSingleton<IKundeRepository, KundeRepository>();
+builder.Services.AddSingleton<IServiceTypeRepository, ServiceTypeRepository>();
+builder.Services.AddSingleton<IArbejdsOrdrerRepository, ArbejdsOrdrerRepository>();
+
+#else
 
 builder.Services.AddScoped<IArbejdsOrdrerService, ArbejdsOrdrerService>();
 builder.Services.AddScoped<IBilService, BilService>();
@@ -21,11 +35,12 @@ builder.Services.AddScoped<IKundeRepository, KundeRepository>();
 builder.Services.AddScoped<IServiceTypeRepository, ServiceTypeRepository>();
 builder.Services.AddScoped<IArbejdsOrdrerRepository, ArbejdsOrdrerRepository>();
 
+#endif
 
 builder.Services.AddDbContext<FourWheelsContext>(option =>
 {
     option.UseInMemoryDatabase("Test");
-});
+}, ServiceLifetime.Singleton);
 
 WebApplication app = builder.Build();
 
