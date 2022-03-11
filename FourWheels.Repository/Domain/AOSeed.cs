@@ -22,7 +22,7 @@ namespace FourWheels.Repository.Domain
                 new Arbejdsordrer
                 {
                     ID = 3, Bil_ID = 4, FKMekanikerID = 2, Oprettet = DateTime.Now,
-                    Service_ID = 2, TidBrugt = DateTime.Now.Hour
+                    Service_ID = 2, TidBrugt = new DateTime(0, 0, 0, 3, 57, 32, 0)
                 }
             );  
         }
