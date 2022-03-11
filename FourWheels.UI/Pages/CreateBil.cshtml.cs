@@ -37,10 +37,10 @@ namespace FourWheels.UI.Pages
             SelectKunde = new SelectList(Kunder, "PKKundeID", "Fuldenavn");
         }
 
-        public async Task OnPost(Bil bil)
+        public async Task<IActionResult> OnPost(Bil bil)
         {
             await _bilService.CreateAsync(bil);
-            await OnGet();
+            return RedirectToPage("/Index");
         }
     }
 }
