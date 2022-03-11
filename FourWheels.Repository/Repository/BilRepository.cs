@@ -14,6 +14,6 @@ namespace FourWheels.Repository.Repository
         }
 
         public async Task<Bil> GetById(int id) 
-            => await _dbContext.Biler.FirstOrDefaultAsync(x => x.ID == id);
+            => await _dbContext.Biler.FirstOrDefaultAsync(x => x.PKBilID == id);
     }
 }

@@ -2,9 +2,9 @@
 {
     public class BrugerReservdele
     {
-        public int ID { get; set; }
-        public int Reservedel_ID { get; set; }
-        public int ArbejdsordreID { get; set; }
+        public int PKBrugteReservedeleID { get; set; }
+        public int FKReservedelID { get; set; }
+        public int FKArbejdsordreID { get; set; }
         public int Antal { get; set; }
 
         public Reservdele Reservdele { get; set; }

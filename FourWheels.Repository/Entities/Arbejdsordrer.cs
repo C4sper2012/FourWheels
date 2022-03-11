@@ -2,20 +2,20 @@
 {
     public class Arbejdsordrer
     {
-        public int ID { get; set; }
-        public int Bil_ID { get; set; }
-        public int Service_ID { get; set; }
-        public int Reservedele { get; set; }
+        public int PKArbejdsordreID { get; set; }
+        public int FKBilID { get; set; }
+        public int FKServiceID { get; set; }
+        public int? FKBrugteReservedeleID { get; set; }
 
-        public int FKMekanikerID { get; set; }
+        public int? FKMekanikerID { get; set; }
         public DateTime Oprettet { get; set; } = DateTime.UtcNow;
         public DateTime TidBrugt { get; set; }
 
 
-        public Mekaiker Mekaiker { get; set; }
+        public Mekaiker? Mekaiker { get; set; }
         public Bil Bil { get; set; }
-        public Servicetype Servicetype { get; set; }
-        public List<BrugerReservdele> BrugteReservdele { get; set; }
+        public Servicetype? Servicetype { get; set; }
+        public List<BrugerReservdele>? BrugteReservdele { get; set; }
 
     }
 }

@@ -10,15 +10,15 @@ namespace FourWheels.Repository.Domain
             builder.Entity<Mekaiker>().HasData(
                 new Mekaiker
                 {
-                    Id = 1, Stilling = "Svend", Fornavn = "Peter", Efternavn = "Petersen"
+                    PKMekanikerID = 1, Stilling = "Svend", Fornavn = "Peter", Efternavn = "Petersen"
                 },
                 new Mekaiker
                 {
-                    Id = 2, Stilling = "Lærling", Fornavn = "Jacob", Efternavn = "Jacobsen"
+                    PKMekanikerID = 2, Stilling = "Lærling", Fornavn = "Jacob", Efternavn = "Jacobsen"
                 },
                 new Mekaiker
                 {
-                    Id = 3, Stilling = "Svend", Fornavn = "Svend", Efternavn = "Sved"
+                    PKMekanikerID = 3, Stilling = "Svend", Fornavn = "Svend", Efternavn = "Sved"
                 }
             );  
         }

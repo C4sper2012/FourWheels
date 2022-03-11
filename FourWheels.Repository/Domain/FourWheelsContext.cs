@@ -94,13 +94,13 @@ namespace FourWheels.Repository.Domain
             #region Arbejdsordrer
 
             builder.Entity<Arbejdsordrer>()
-                .Property(p => p.Bil_ID);
+                .Property(p => p.FKBilID);
 
             builder.Entity<Arbejdsordrer>()
-                .Property(p => p.Service_ID);
+                .Property(p => p.FKServiceID);
 
             builder.Entity<Arbejdsordrer>()
-                .Property(p => p.FKMekanikerID);
+                 .Property(p => p.FKMekanikerID);
 
             // builder.Entity<Arbejdsordrer>()
             //     .Property(p => p.Reservdele);
@@ -116,7 +116,7 @@ namespace FourWheels.Repository.Domain
             #region BrugerReservdele
 
             builder.Entity<BrugerReservdele>()
-                .Property(p => p.Reservedel_ID);
+                .Property(p => p.FKReservedelID);
 
             builder.Entity<BrugerReservdele>()
                 .Property(p => p.Antal);
@@ -167,7 +167,7 @@ namespace FourWheels.Repository.Domain
             builder.Entity<Bil>()
                 .HasMany<Arbejdsordrer>()
                 .WithOne(x => x.Bil)
-                .HasForeignKey(x => x.Bil_ID);
+                .HasForeignKey(x => x.FKBilID);
 
             builder.Entity<Kunde>()
                 .HasMany(x => x.Biler)
@@ -177,22 +177,31 @@ namespace FourWheels.Repository.Domain
             builder.Entity<BrugerReservdele>()
                 .HasOne<Arbejdsordrer>()
                 .WithMany()
-                .HasForeignKey(x => x.ArbejdsordreID);
+                .HasForeignKey(x => x.FKArbejdsordreID);
 
             builder.Entity<BrugerReservdele>()
                 .HasOne<Reservdele>()
                 .WithMany()
-                .HasForeignKey(x => x.Reservedel_ID);
+                .HasForeignKey(x => x.FKReservedelID);
 
             builder.Entity<Mekaiker>()
                 .HasMany<Arbejdsordrer>()
                 .WithOne()
-                .HasForeignKey(x => x.FKMekanikerID);
+                .HasForeignKey(x => x.FKMekanikerID).IsRequired(false);
 
             builder.Entity<Arbejdsordrer>()
                 .HasOne<Servicetype>()
                 .WithMany()
-                .HasForeignKey(x => x.Service_ID);
+                .HasForeignKey(x => x.FKServiceID);
+
+            builder.Entity<Arbejdsordrer>().HasKey(x => x.PKArbejdsordreID);
+            builder.Entity<Bil>().HasKey(x => x.PKBilID);
+            builder.Entity<BrugerReservdele>().HasKey(x => x.PKBrugteReservedeleID);
+            builder.Entity<Kunde>().HasKey(x => x.PKKundeID);
+            builder.Entity<Mekaiker>().HasKey(x => x.PKMekanikerID);
+            builder.Entity<Reservdele>().HasKey(x => x.PKReservedelID);
+            builder.Entity<Servicetype>().HasKey(x => x.PKServicetypeID);
+            
 
             #endregion
 

@@ -2,7 +2,7 @@
 {
     public class Kunde
     {
-        public int Id { get; set; }
+        public int PKKundeID { get; set; }
         public string Fornavn { get; set; }
         public string Efternavn { get; set; }
         public string VejNavn { get; set; }
@@ -13,7 +13,7 @@
         public string Mobil { get; set; }
         public  string Email { get; set; }
 
-        public List<Bil> Biler { get; set; }
+        public List<Bil>? Biler { get; set; }
         public string Fuldenavn => $"{Fornavn} {Efternavn}";
     }
 }
