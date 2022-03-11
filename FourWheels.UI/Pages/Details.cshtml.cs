@@ -15,12 +15,15 @@ namespace FourWheels.UI.Pages
             _arbejdsOrdrerService = arbejdsOrdrerService;
         }
 
+        [BindProperty(SupportsGet = true)]
         public Bil Bil { get; set; }
+        [BindProperty(SupportsGet = true)]
         public List<Arbejdsordrer> ArbejdsOrdrere { get; set; }
+        [BindProperty(SupportsGet = true)]
         public Arbejdsordrer NyesteArbejdsOrder { get; set; }
         public async Task<IActionResult> OnGet(int id)
         {
-            Bil = await _bilService.GetByIdAsync(id);
+            Bil = await _bilService.GetById(id);
             
             ArbejdsOrdrere = (await _arbejdsOrdrerService.GetAllAsync())
                 .Where(x => x.Bil.Registreringsnummer == Bil.Registreringsnummer)

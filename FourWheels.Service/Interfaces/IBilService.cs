@@ -4,6 +4,6 @@ namespace FourWheels.Service.Interfaces
 {
     public interface IBilService : IGenericService<Bil>
     {
-    
+        Task<Bil> GetById(int id);
     }
 }

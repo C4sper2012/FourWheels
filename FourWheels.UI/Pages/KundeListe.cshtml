@@ -1,0 +1,24 @@
+﻿@page
+@using FourWheels.Repository.Entities
+@model FourWheels.UI.Pages.KundeListe
+
+@{
+    ViewData["Title"] = "KundeListe";
+}
+
+<div class="row">
+    @foreach (Kunde kunde in Model.ListKunde)
+    {
+        <div class="col-4 mt-4">
+            <div class="card">
+                <img class="card-img-top" src="img/200x200.png" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@kunde.Fornavn @kunde.Efternavn</h5>
+                    <p class="card-text">tlf. @kunde.Mobil</p>
+                    <p>Email: <a class="card-text" href="mailto:@kunde.Email">@kunde.Email</a></p>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
