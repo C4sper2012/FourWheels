@@ -12,7 +12,7 @@
             <h1>@Model.Bil.Registreringsnummer</h1>
         </div>
         <div class="col-6">
-            <h1>@Model.Bil.Model</h1>
+            <h1>@Model.Bil.Producent @Model.Bil.Model</h1>
         </div>
 
     </div>
@@ -20,7 +20,6 @@
     <div class="row">
         <div class="col-md-8 col-sm-12">
             <div class="media">
-                <img class="mr-3" src="images/115X115.gif" alt="Generic placeholder image">
                 <div class="media-body">
                     <h5 class="mt-0">Skal udføres:&nbsp;</h5>
                     <p>@Model.NyesteArbejdsOrder.Servicetype.ServiceType</p>
@@ -33,91 +32,39 @@
                     <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.Fornavn</strong><br>
                     <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.Efternavn</strong><br>
                     <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.Bynavn</strong><br>
-                    <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.VejNavn</strong><br>
+                    <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.VejNavn @Model.NyesteArbejdsOrder.Bil.Kunde.Vej_Nummer</strong><br>
                     <strong>@Model.NyesteArbejdsOrder.Bil.Kunde.Email</strong><br>
                 </address>
             </div>
         </div>
     </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <h2>Historik</h2>
-            <hr>
-            @if (Model.ArbejdsOrdrere != null)
-            {
-                @foreach (Arbejdsordrer ao in Model.ArbejdsOrdrere)
-                {
-                    <h5>
-                        <span class="badge badge-secondary">@ao.Servicetype.ServiceType</span>
-                    </h5>
-
-                    <h5>
-                        <span class="badge badge-secondary">30.000 km service</span>
-                    </h5>
-                }
-            }
-
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <h2>Servicehistorik</h2>
-            <hr>
-            <div class="progress mt-4">
-                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> 40.000 km service</div>
-            </div>
-            <div class="progress mt-4">
-                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> 30.000 km service</div>
-            </div>
-            <div class="progress mt-4">
-                <div class="progress-bar bg-info" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> Synstjek</div>
-            </div>
-            <div class="progress mt-4">
-                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> Tilbagekaldelse, trækkrog</div>
-            </div>
-        </div>
-    </div>
-    <hr>
     <h2>Tidligere arbejde&nbsp;</h2>
     <hr>
-    <div class="row">
-        <div class="col-md-6 col-sm-12">
-            <div class="row">
-                <div class="col-5">
-                    <h4>Mekaniker Bob</h4>
+    <div class="w-100">
+        @foreach (Arbejdsordrer ao in Model.ArbejdsOrdrere)
+        {
+            <div class="ms-auto my-auto mt-2">
+                <div class="row">
+                    <div class="col-5">
+                        <h4>@ao.Mekaiker.Fornavn</h4>
+                    </div>
+                    <div class="col-6">
+                        <h5 class="text-right">
+                            <span aria-hidden="true"></span>@ao.Oprettet
+                        </h5>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <h5 class="text-right"><span aria-hidden="true"></span> Jan 2020</h5>
-                </div>
+                <h5>
+                    <span class="badge bg-success">@ao.Servicetype.ServiceType</span>
+                </h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam fugit deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione distinctio nihil dignissimos esse!</p>
+                <ul>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur.</li>
+                    <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+                </ul>
             </div>
-            <h5>
-                <span class="badge badge-secondary">Almindelig service</span>
-            </h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam fugit deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione distinctio nihil dignissimos esse!</p>
-            <ul>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-            </ul>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <div class="row">
-                <div class="col-5">
-                    <h4>Mekaniker Bent</h4>
-                </div>
-                <div class="col-6">
-                    <h5 class="text-right"><span aria-hidden="true"></span> Jan 2021</h5>
-                </div>
-            </div>
-            <h5>
-                <span class="badge badge-secondary">Almindelig service</span>
-            </h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, recusandae, corporis, tempore nam fugit deleniti sequi excepturi quod repellat laboriosam soluta laudantium amet dicta non ratione distinctio nihil dignissimos esse!</p>
-            <ul>
-                <li>Lorem ipsum dolor sit amet.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur.</li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
-            </ul>
-        </div>
+            <hr/>
+        }
     </div>
-    <hr>
 </div>
