@@ -1,19 +1,19 @@
+using System.ComponentModel.DataAnnotations;
 using FourWheels.Repository.Entities;
 using FourWheels.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
 
-namespace FourWheels.web.Pages
+namespace FourWheels.UI.Pages
 {
     public class CreateBilModel : PageModel
     {
         private readonly IBilService _bilService;
-        private readonly ICustomerService _customerService;
+        private readonly IKundeService _customerService;
 
 
-        public CreateBilModel(IBilService service, ICustomerService customerService)
+        public CreateBilModel(IBilService service, IKundeService customerService)
         {
             _bilService = service;
             _customerService = customerService;
@@ -23,31 +23,29 @@ namespace FourWheels.web.Pages
         [BindProperty, Required]
         public Bil Bil { get; set; }
 
-        public List<Kunde> Kunder { get; set; } = new List<Kunde>();
+        [BindProperty(SupportsGet = true)]
+        public List<Kunde> Kunder { get; set; }
+
+        [BindProperty]
+        public Kunde Kunde { get; set; }
 
         public SelectList SelectKunde { get; set; }
 
         public async Task OnGet()
         {
             Kunder = await _customerService.GetAllAsync();
-            SelectKunde = new SelectList(Kunder);
+            SelectKunde = new SelectList(Kunder, "Id", "Fuldenavn");
         }
 
-        public async Task OnPost()
+        public async Task OnPost(Bil bil)
         {
-            if (ModelState.IsValid)
-            {
-                Bil bil = new Bil
-                {
-                    Registreringsnummer = Bil.Registreringsnummer,
-                    Stelnummer = Bil.Stelnummer,
-                    Producent = Bil.Producent,
-                    Model = Bil.Model,
-                    FKEjer = Bil.FKEjer,
-
-                };
-                await _bilService.CreateAsync(bil);
-            }
+            //ModelState.ClearValidationState(nameof(bil));
+            // TryValidateModel(bil);
+            // if (!ModelState.IsValid)
+            // {
+            //     await _bilService.CreateAsync(bil);
+            // }
+            await _bilService.CreateAsync(bil);
             await OnGet();
         }
     }

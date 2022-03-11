@@ -10,4 +10,9 @@
       <ProjectReference Include="..\FourWheels.Repository\FourWheels.Repository.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Services\CustomerService.cs" />
+      <Compile Remove="Interfaces\ICustomerService.cs" />
+    </ItemGroup>
+
 </Project>

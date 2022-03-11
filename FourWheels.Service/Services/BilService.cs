@@ -8,8 +8,14 @@ namespace FourWheels.Service.Services
 {
     public class BilService : GenericService<Bil, IBilRepository>, IBilService
     {
-        public BilService(IBilRepository genericRepository) : base(genericRepository)
+        private readonly IBilRepository _bilRepository;
+        public BilService(IBilRepository genericRepository, IBilRepository bilRepository) : base(genericRepository)
         {
+            _bilRepository = bilRepository;
         }
+
+
+        public async Task<Bil> GetById(int id) =>
+             await _bilRepository.GetById(id);
     }
 }
