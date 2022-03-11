@@ -17,5 +17,11 @@ namespace FourWheels.Service.Services
         {
             return _arbejdsOrdrerRepository.GetAllAOIncludeMek();
         }
+
+        public Task<Arbejdsordrer> GetOneAOIncludeMek(int id)
+        {
+            return _arbejdsOrdrerRepository.GetOneAOIncludeMek(id);
+        }
+
     }
 }

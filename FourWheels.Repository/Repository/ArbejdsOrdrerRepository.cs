@@ -22,5 +22,19 @@ namespace FourWheels.Repository.Repository
                 .ThenInclude(k => k.Kunde)
                 .ToListAsync();
         }
+
+
+        public async Task<Arbejdsordrer> GetOneAOIncludeMek(int id)
+        {
+            return _dbContext.Arbejdsordrer
+               .Where(x => x.PKArbejdsordreID == id)
+               .Include(m => m.Mekaiker)
+               .Include(s => s.Servicetype)
+               .Include(c => c.Bil)
+               .ThenInclude(k => k.Kunde)
+               .FirstOrDefault();
+        }
+
+
     }
 }
