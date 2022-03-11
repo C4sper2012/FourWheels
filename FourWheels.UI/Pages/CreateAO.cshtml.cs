@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using FourWheels.Repository.Entities;
 using FourWheels.Service.Interfaces;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,14 +24,13 @@ namespace FourWheels.web.Pages
             _arbejdsOrdreService = arbejdsOrdreService;
         }
         #endregion
-
     
         public async Task OnGetAsync()
         {
             List<Bil> biler = await _bilService.GetAllWithKundeAsync();
             List<Servicetype> serviceTyper = await _serviceTypeService.GetAllAsync();
 
-            Input.Biler = biler.Select(b => new SelectListItem($"{b.Registreringsnummer} - {b.Kunde.Fuldenavn} ({b.Producent} {b.Model})", b.ID.ToString()))
+            Input.Biler = biler.Select(b => new SelectListItem($"{b.Registreringsnummer} - {b.Kunde.Fuldenavn} ({b.Producent} {b.Model})", b.PKBilID.ToString()))
                                .ToList();
             Input.ServiceTyper = new SelectList(serviceTyper, "Id", "ServiceType");
         }
