@@ -1,0 +1,85 @@
+@page
+@model FourWheels.UI.Pages.TakeAO
+
+<div class="text-center">
+
+    <h1>Ledige arbejdsordre</h1>
+
+    <hr/>
+
+    <div class="col-12">
+        <table class="table table-hover">
+            <tr>
+                <th>Bil</th>
+                <th>Reg nr.</th>
+                <th>Opgave</th>
+                <th>Oprettet</th>
+                <th></th>
+
+            </tr>
+            @if (Model.Arbejdsordrers is not null)
+            {
+                @foreach (var item in Model.Arbejdsordrers)
+                {
+                    @if (item.Mekaiker is null)
+                    {
+                        <tr>
+                            <td>@item.Bil.Model</td>
+                            <td>@item.Bil.Registreringsnummer</td>
+                            <td>@item.Servicetype.ServiceType</td>
+                            <td>@item.Oprettet</td>
+                            <td>
+                                
+                                <button type="button"
+                                        class="btn btn-outline-success"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editModal"
+                                        data-id="@item.PKArbejdsordreID"
+                                        data-car="@item.Bil.Model"
+                                        data-reg="@item.Bil.Registreringsnummer"
+                                        data-desc="@item.Servicetype.ServiceType">
+                                    Tag opgave
+                                    <i class="fas fa-circle-info"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </table>
+    </div>
+
+    <form asp-page-handler="Modal" method="post">
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input class="item-id" type="hidden" asp-for="@Model.Input.AOID"/>
+                        <div class="form-group">
+                            <p>Bil: <span class="item-car"></span></p>
+                        </div>
+                        <div class="form-group">
+                            <p>Registreringsnummer: <span class="item-reg"></span></p>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Mekanikere"></label>
+                            <select asp-for="Input.MekID" asp-items="Model.Mekanikere">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Luk</button>
+                        <button type="submit" class="btn btn-success">Gem</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -80,3 +80,19 @@ $(".previous").click(function(){
         easing: 'easeInOutBack'
     });
 });
+
+$('#editModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var itemID = button.data('id')
+    var itemCar = button.data('car')
+    var itemReg = button.data('reg')
+    var itemDesc = button.data('desc')
+
+    var modal = $(this)
+
+    modal.find('.modal-title').text(itemDesc)
+    modal.find('.item-id').val(itemID)
+    modal.find('.item-reg').text(itemReg)
+    modal.find('.item-car').text(itemCar)
+    modal.find('.item-description').val(itemDesc)
+})
