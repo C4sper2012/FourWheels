@@ -17,22 +17,20 @@
                 <th>Servicetype</th>
                 <th>Brugte Reservdele</th>
                 <th>Oprettet</th>
-                <th>TidBrugt</th>
 
             </tr>
             @if (Model.Arbejdsordrers is not null)
             {
                 @foreach (var item in Model.Arbejdsordrers)
                 {
-                    @if (item.Mekaiker is not null)
+                    @if (item.Mekaiker is not null && item.TidBrugt == Model.DefaultTime)
                     {
                         <tr>
                             <td>@item.Mekaiker.Fuldenavn</td>
-                            <td>@item.Bil</td>
-                            <td>@item.Servicetype</td>
+                            <td>@item.Bil.Registreringsnummer</td>
+                            <td>@item.Servicetype.ServiceType</td>
                             <td>@item.BrugteReservdele</td>
                             <td>@item.Oprettet</td>
-                            <td>@item.TidBrugt</td>
 
                         </tr>
                     }

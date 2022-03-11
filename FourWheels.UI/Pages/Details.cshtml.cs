@@ -17,16 +17,19 @@ namespace FourWheels.UI.Pages
 
         [BindProperty(SupportsGet = true)]
         public Bil Bil { get; set; }
+        
         [BindProperty(SupportsGet = true)]
         public List<Arbejdsordrer> ArbejdsOrdrere { get; set; }
+        
         [BindProperty(SupportsGet = true)]
         public Arbejdsordrer NyesteArbejdsOrder { get; set; }
+        
         public async Task<IActionResult> OnGet(int id)
         {
-            Bil = await _bilService.GetById(id);
+            Bil = await _bilService.GetByIdAsync(id);
             
-            ArbejdsOrdrere = (await _arbejdsOrdrerService.GetAllAsync())
-                .Where(x => x.Bil.Registreringsnummer == Bil.Registreringsnummer)
+            ArbejdsOrdrere = (await _arbejdsOrdrerService.GetAllAOIncludeMek())
+                .Where(x => x.Bil.PKBilID == Bil.PKBilID)
                 .OrderByDescending(x => x.Oprettet).ToList();
 
             NyesteArbejdsOrder = ArbejdsOrdrere.FirstOrDefault();

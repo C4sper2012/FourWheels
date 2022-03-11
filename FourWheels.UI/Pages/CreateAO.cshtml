@@ -1,65 +1,72 @@
-﻿@page
+﻿@page "{handler?}/{kundeId?}/{bilId?}"
 @model FourWheels.web.Pages.CreateAO
 
 @{
     Layout = "Shared/_Layout";
 }
 
+<h1 class="mt-3">Opret arbejds ordre</h1>
+
+<br/>
 
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <form id="msform">
-            <!-- progressbar -->
-            <ul id="progressbar">
-                <li class="active">Vælg kunde</li>
-                <li>Vælg bil</li>
-                <li>Opret AO</li>
-            </ul>
+    <div class="col-md-4">
+        <form method="post">
+            <div class="mb-3">
+                <label asp-for="Input.ValgteBilId"></label> <br/>
+                <select asp-for="Input.ValgteBilId" asp-items="Model.Input.Biler" class="searchable-list">
+                    <option disabled hidden selected>Vælg en bil</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Input.ValgteBilId"></span>
+            </div>
 
+            <div class="mb-3">
+                <label asp-for="Input.ValgteServiceTypeId"></label> <br/>
+                <select asp-for="Input.ValgteServiceTypeId" asp-items="Model.Input.ServiceTyper" class="form-select">
+                    <option disabled hidden selected>Vælg en service type</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Input.ValgteServiceTypeId"></span>
+            </div>
+            <button class="btn btn-success">Opret</button>
 
-            <!-- fieldsets -->
-            <fieldset>
-                <h2 class="fs-title">Kundedetaljer</h2>
-                <label asp-for="Input.ValgteKunde"></label>
-                <select asp-for="Input.ValgteKunde" asp-items="Model.Input.Kunder">
-                </select>
-                <span class="text-danger" asp-validation-for="Input.ValgteKunde"></span>
-                <!-- Make Razor input customer name in the fields somehow with the use of magic -->
-                <input type="text" id="fname" placeholder="Fornavn"/>
-                <input type="text" id="lname" placeholder="Efternavn"/>
-                <input type="tel" id="mphone" placeholder="Mobiltelefon"/>
-                <input type="tel" id="phone" placeholder="Telefon"/>
-                <input type="email" id="mail" placeholder="Mail"/>
-                <input type="button" name="next" class="next action-button" value="Næste"/>
-            </fieldset>
-            <fieldset>
-                <h2 class="fs-title">Vælg bil</h2>
-                <label asp-for="Input.ValgteBil"></label>
-                <select asp-for="Input.ValgteBil" asp-items="Model.Input.Biler">
-                </select>
-                <span class="text-danger" asp-validation-for="Input.ValgteBil"></span>
-                <!-- Make Razor input car info in the fields somehow with the use of magic -->
-                <input type="text" id="carbrand" placeholder="Model"/>
-                <input type="text" id="carmodel" placeholder="Mærke"/>
-                <input type="text" id="vinnumber" placeholder="Stelnr"/>
-                <br>
-                <input type="button" name="previous" class="previous action-button-previous" value="Forrige"/>
-                <input type="button" name="next" class="next action-button" value="Næste"/>
-            </fieldset>
-            <fieldset>
-                <h2 class="fs-title">Opret AO</h2>
-                <label asp-for="Input.ValgteServiceType"></label>
-                <select asp-for="Input.ValgteServiceType" asp-items="Model.Input.ServiceTyper">
-                </select>
-                <span class="text-danger" asp-validation-for="Input.ValgteServiceType"></span>
-                <input type="text" id="note" placeholder="Bemærkninger"/>
-                <input id="laanebil" type="checkbox"/>
-                <label for="laanebil">Lånebil?</label>
-                <br>
-                <input type="button" name="previous" class="previous action-button-previous" value="Forrige"/>
-                <input type="submit" name="submit" class="submit action-button" value="Opret"/>
-            </fieldset>
         </form>
     </div>
 </div>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+$('.searchable-list').select2();
+</script>
+
+<partial name="Shared/_ValidationScriptsPartial" />
+@*<div>
+        <h2 class="fs-title">Vælg bil</h2>
+        <form method="get" asp-page-handler="BilSelected">
+            <label asp-for="Input.ValgteBil"></label>
+            <select name="bilId" asp-items="Model.Input.Biler" onchange="this.parentElement.submit()">
+                <option disabled hidden selected>Vælg en kunde</option>
+            </select>
+            <span class="text-danger" asp-validation-for="Input.ValgteBil"></span>
+        </form>
+
+        <input type="text" asp-for="Input.ValgteBil.Model" placeholder="Model"/>
+        <input type="text" asp-for="Input.ValgteBil.Producent" placeholder="Mærke"/>
+        <input type="text" asp-for="Input.ValgteBil.Stelnummer" placeholder="Stelnr"/>
+        <br>
+        <input type="button" name="previous" class="previous action-button-previous" value="Forrige"/>
+        <input type="button" name="next" class="next action-button" value="Næste"/>
+    </div>
+    <div>
+        <h2 class="fs-title">Opret AO</h2>
+        <label asp-for="Input.ValgteServiceType"></label>
+        <select asp-for="Input.ValgteServiceType" asp-items="Model.Input.ServiceTyper">
+        </select>
+        <span class="text-danger" asp-validation-for="Input.ValgteServiceType"></span>
+        <input type="text" placeholder="Bemærkninger"/>
+        <input id="laanebil" type="checkbox"/>
+        <label for="laanebil">Lånebil?</label>
+        <br>
+        <input type="button" name="previous" class="previous action-button-previous" value="Forrige"/>
+        <button type="submit" name="submit" class="submit action-button" value="Opret">bruh</button>
+    </div>
+</div>*@
