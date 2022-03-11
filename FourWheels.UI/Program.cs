@@ -15,6 +15,8 @@ builder.Services.AddSingleton<IArbejdsOrdrerService, ArbejdsOrdrerService>();
 builder.Services.AddSingleton<IBilService, BilService>();
 builder.Services.AddSingleton<IKundeService, KundeService>();
 builder.Services.AddSingleton<IServiceTypeService, ServiceTypeService>();
+builder.Services.AddSingleton<IEmailService, EmailService>();
+
 
 builder.Services.AddSingleton<IArbejdsOrdrerRepository, ArbejdsOrdrerRepository>();
 builder.Services.AddSingleton<IBilRepository, BilRepository>();
@@ -28,6 +30,8 @@ builder.Services.AddScoped<IArbejdsOrdrerService, ArbejdsOrdrerService>();
 builder.Services.AddScoped<IBilService, BilService>();
 builder.Services.AddScoped<IKundeService, KundeService>();
 builder.Services.AddScoped<IServiceTypeService, ServiceTypeService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+
 
 builder.Services.AddScoped<IArbejdsOrdrerRepository, ArbejdsOrdrerRepository>();
 builder.Services.AddScoped<IBilRepository, BilRepository>();

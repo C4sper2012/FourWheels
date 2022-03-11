@@ -29,7 +29,8 @@ namespace FourWheels.Service.Services
                 {
                     Subject = "Din bil er færdig!",
                     Body = $"Hej {kunde.Fuldenavn}" +
-                           "Din bil er nu færdig og kan afhentes.",
+                           $"Din {arbejdsordrer.Bil.Producent} {arbejdsordrer.Bil.Model} " +
+                           $"med registreringsnummer: {arbejdsordrer.Bil.Registreringsnummer} er nu færdig og kan afhentes.",
 
 
                     From = new MailAddress("fourWheels@mail.dk")
@@ -39,6 +40,5 @@ namespace FourWheels.Service.Services
                 await smtp.SendMailAsync(message);
             }
         }
-
     }
 }
