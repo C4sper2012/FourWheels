@@ -24,8 +24,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="#">Hjem</a>
-            </li>
-            
+          </li>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     Opret en:
@@ -36,6 +35,15 @@
                     <li><a class="dropdown-item" asp-page="CreateAO">Arbejdsordre</a></li>
                 </ul>
             </div>
+            <li class="nav-item">
+                <a class="nav-link" asp-page="/KundeListe">Kunde Liste</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" asp-page="/CreateBil">Opret Bil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-page="/ArbejdsOrdreListe">AO Liste</a>
+            </li>
         </ul>
     </div>
 </nav>

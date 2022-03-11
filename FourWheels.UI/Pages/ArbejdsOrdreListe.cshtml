@@ -1,0 +1,44 @@
+﻿@page
+@model FourWheels.UI.Pages.ArbejdsOrdreListeModel
+@{
+}
+
+<div class="text-center">
+
+    <h1>Igangværende Arbjdsorde</h1>
+
+    <br />
+
+    <div class="col-12">
+        <table class="table table-hover">
+            <tr>
+                <th>Mekaiker</th>
+                <th>Bil</th>
+                <th>Servicetype</th>
+                <th>Brugte Reservdele</th>
+                <th>Oprettet</th>
+                <th>TidBrugt</th>
+
+            </tr>
+            @if (Model.Arbejdsordrers is not null)
+            {
+                @foreach (var item in Model.Arbejdsordrers)
+                {
+                    @if (item.Mekaiker is not null)
+                    {
+                        <tr>
+                            <td>@item.Mekaiker.Fuldenavn</td>
+                            <td>@item.Bil</td>
+                            <td>@item.Servicetype</td>
+                            <td>@item.BrugteReservdele</td>
+                            <td>@item.Oprettet</td>
+                            <td>@item.TidBrugt</td>
+
+                        </tr>
+                    }
+                }
+            }
+        </table>
+    </div>
+
+</div>
