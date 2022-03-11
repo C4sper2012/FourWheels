@@ -1,4 +1,6 @@
-﻿using FourWheels.Repository.Entities;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using FourWheels.Repository.Entities;
 using FourWheels.Service.Interfaces;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
@@ -9,49 +11,53 @@ namespace FourWheels.web.Pages
 {
     public class CreateAO : PageModel
     {
-        public class InputModel
-        {
-            public SelectList Biler { get; set; }
-            public SelectList Kunder { get; set; }
-            public SelectList ServiceTyper { get; set; }
-
-            [BindProperty]
-            public Bil ValgteBil { get; set; } = new();
-            [BindProperty]
-            public Kunde ValgteKunde { get; set; }
-            [BindProperty]
-            public Servicetype ValgteServiceType { get; set; }
-            
-            [BindProperty]
-            public Arbejdsordrer ArbejdsOrdrer { get; set; }
-        }
+        [BindProperty]
         public InputModel Input { get; set; } = new();
 
+        #region Dependencies
         private readonly IBilService _bilService;
-        private readonly IKundeService _kundeService;
         private readonly IServiceTypeService _serviceTypeService;
-        public CreateAO(IBilService bilService, IKundeService kundeService, IServiceTypeService serviceTypeService)
+        private readonly IArbejdsOrdrerService _arbejdsOrdreService;
+        public CreateAO(IBilService bilService, IServiceTypeService serviceTypeService, IArbejdsOrdrerService arbejdsOrdreService)
         {
             _bilService = bilService;
-            _kundeService = kundeService;
             _serviceTypeService = serviceTypeService;
+            _arbejdsOrdreService = arbejdsOrdreService;
         }
+        #endregion
+
     
         public async Task OnGetAsync()
         {
-            List<Kunde> kunder = await _kundeService.GetAllAsync();
-            Input.Kunder = new SelectList(kunder, "Id", "Fuldenavn");
-            
-            List<Bil> biler = await _bilService.GetAllAsync();
+            List<Bil> biler = await _bilService.GetAllWithKundeAsync();
             List<Servicetype> serviceTyper = await _serviceTypeService.GetAllAsync();
-            
-            Input.Biler = new SelectList(biler, "ID", "Registreringsnummer");
+
+            Input.Biler = biler.Select(b => new SelectListItem($"{b.Registreringsnummer} - {b.Kunde.Fuldenavn} ({b.Producent} {b.Model})", b.ID.ToString()))
+                               .ToList();
             Input.ServiceTyper = new SelectList(serviceTyper, "Id", "ServiceType");
         }
-        public async Task OnGetKundeSelectedAsync(int id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            Input.ValgteKunde = await _kundeService.GetByIdAsync(id);
-            Input.ValgteKunde ??= new();
+            if (!ModelState.IsValid) return Page();
+            
+            Arbejdsordrer ordrer = new Arbejdsordrer()
+            {
+                Bil = await _bilService.GetByIdAsync(Input.ValgteBilId),
+                Servicetype = await _serviceTypeService.GetByIdAsync(Input.ValgteServiceTypeId)
+            };
+            await _arbejdsOrdreService.CreateAsync(ordrer);
+            return RedirectToPage("/index");
+        }
+        
+        public class InputModel
+        {
+            public List<SelectListItem> Biler { get; set; }
+            public SelectList ServiceTyper { get; set; }
+
+            [BindProperty, DisplayName("Eksisterende kunde"), Required(ErrorMessage = "Du skal vælge en kunde")]
+            public int ValgteBilId { get; set; } = new();
+            [BindProperty, DisplayName("Service type"), Required(ErrorMessage = "Du skal vælge en service type")]
+            public int ValgteServiceTypeId { get; set; }
         }
     }
 }
