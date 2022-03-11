@@ -94,13 +94,13 @@ namespace FourWheels.Repository.Domain
             #region Arbejdsordrer
 
             builder.Entity<Arbejdsordrer>()
-                .Property(p => p.Bil_ID);
+                .Property(p => p.FKBilID);
 
             builder.Entity<Arbejdsordrer>()
-                .Property(p => p.Service_ID);
+                .Property(p => p.FKServiceID);
 
             builder.Entity<Arbejdsordrer>()
-                .Property(p => p.FKMekanikerID);
+                 .Property(p => p.FKMekanikerID);
 
             // builder.Entity<Arbejdsordrer>()
             //     .Property(p => p.Reservdele);
@@ -116,7 +116,7 @@ namespace FourWheels.Repository.Domain
             #region BrugerReservdele
 
             builder.Entity<BrugerReservdele>()
-                .Property(p => p.Reservedel_ID);
+                .Property(p => p.FKReservedelID);
 
             builder.Entity<BrugerReservdele>()
                 .Property(p => p.Antal);
@@ -167,7 +167,7 @@ namespace FourWheels.Repository.Domain
             builder.Entity<Bil>()
                 .HasMany<Arbejdsordrer>()
                 .WithOne(x => x.Bil)
-                .HasForeignKey(x => x.Bil_ID);
+                .HasForeignKey(x => x.FKBilID);
 
             builder.Entity<Kunde>()
                 .HasMany(x => x.Biler)
@@ -177,87 +177,41 @@ namespace FourWheels.Repository.Domain
             builder.Entity<BrugerReservdele>()
                 .HasOne<Arbejdsordrer>()
                 .WithMany()
-                .HasForeignKey(x => x.ArbejdsordreID);
+                .HasForeignKey(x => x.FKArbejdsordreID);
 
             builder.Entity<BrugerReservdele>()
                 .HasOne<Reservdele>()
                 .WithMany()
-                .HasForeignKey(x => x.Reservedel_ID);
+                .HasForeignKey(x => x.FKReservedelID);
 
             builder.Entity<Mekaiker>()
                 .HasMany<Arbejdsordrer>()
-                .WithOne()
+                .WithOne(x => x.Mekaiker)
                 .HasForeignKey(x => x.FKMekanikerID);
 
-            builder.Entity<Arbejdsordrer>()
-                .HasOne<Servicetype>()
-                .WithMany()
-                .HasForeignKey(x => x.Service_ID);
+            builder.Entity<Servicetype>()
+                .HasMany<Arbejdsordrer>()
+                .WithOne(x => x.Servicetype)
+                .HasForeignKey(x => x.FKServiceID);
+
+            builder.Entity<Arbejdsordrer>().HasKey(x => x.PKArbejdsordreID);
+            builder.Entity<Bil>().HasKey(x => x.PKBilID);
+            builder.Entity<BrugerReservdele>().HasKey(x => x.PKBrugteReservedeleID);
+            builder.Entity<Kunde>().HasKey(x => x.PKKundeID);
+            builder.Entity<Mekaiker>().HasKey(x => x.PKMekanikerID);
+            builder.Entity<Reservdele>().HasKey(x => x.PKReservedelID);
+            builder.Entity<Servicetype>().HasKey(x => x.PKServicetypeID);
+            
 
             #endregion
 
             #region Seed Data
 
-            builder.Entity<Kunde>().HasData(
-                new Kunde
-                {
-                    Bynavn = "Sønderborg", Efternavn = "Heuck", Email = "nico@lai.dk", Fornavn = "Nicolai", Id = 1,
-                    Mobil = "12345678", Postnummer = 6400, Telefon = "", Vej_Nummer = "11b", VejNavn = "Gadevej"
-                },
-                new Kunde
-                {
-                    Bynavn = "Guderup", Efternavn = "Nielsen", Email = "tobi@s.dk", Fornavn = "Tobias", Id = 2,
-                    Mobil = "23647211", Postnummer = 6430, Telefon = "", Vej_Nummer = "42", VejNavn = "Nordborgvej"
-                },
-                new Kunde
-                {
-                    Bynavn = "Tønder", Efternavn = "Andreasen", Email = "jan@tved.me", Fornavn = "Jan", Id = 3,
-                    Mobil = "22138860", Postnummer = 6270, Telefon = "52148556", Vej_Nummer = "128", VejNavn = "Tved"
-                },
-                new Kunde
-                {
-                    Bynavn = "Gråsten", Efternavn = "Voss", Email = "d@n.dk", Fornavn = "Dan", Id = 4,
-                    Mobil = "74740010", Postnummer = 6400, Telefon = "", Vej_Nummer = "99e", VejNavn = "Danfossstraße"
-                }
-            );
-
-            builder.Entity<Bil>().HasData(
-                new Bil
-                {
-                    FKEjer = 1, ID = 1, Model = "Polo", Producent = "Volkswagen", Registreringsnummer = "AU79747",
-                    Stelnummer = "WVWZZZ3CZ8E166237"
-                },
-                new Bil
-                {
-                    FKEjer = 3, ID = 2, Model = "CitiGo", Producent = "Skoda", Registreringsnummer = "BK20515",
-                    Stelnummer = "TMBZZZAAZHD604375"
-                },
-                new Bil
-                {
-                    FKEjer = 2, ID = 3, Model = "Swift", Producent = "Suzuki", Registreringsnummer = "XZ12345",
-                    Stelnummer = "SUZI1234567890ABC"
-                },
-                new Bil
-                {
-                    FKEjer = 3, ID = 4, Model = "Atenza", Producent = "Mazda", Registreringsnummer = "BD84922",
-                    Stelnummer = "JMZGJ593821177805"
-                },
-                new Bil
-                {
-                    FKEjer = 4, ID = 5, Model = "ID4", Producent = "Volkswagen", Registreringsnummer = "CU99104",
-                    Stelnummer = "WVWELECTRICID404"
-                }
-            );
-
-            builder.Entity<Servicetype>().HasData(
-                new Servicetype { Id = 1, ServiceType = "Olieskift" },
-                new Servicetype { Id = 2, ServiceType = "Almindelig service" },
-                new Servicetype { Id = 3, ServiceType = "Bremseeftersyn" },
-                new Servicetype { Id = 4, ServiceType = "Synstjek" },
-                new Servicetype { Id = 5, ServiceType = "Karosseriskade" },
-                new Servicetype { Id = 6, ServiceType = "Hjulskift" }
-            );
-
+            CustomerSeed.Seed(builder);
+            CarSeed.Seed(builder);
+            ServiceTypeSeed.Seed(builder);
+            MekanikerSeed.Seed(builder);
+            AOSeed.Seed(builder);
             #endregion
 
             base.OnModelCreating(builder);

@@ -2,7 +2,7 @@
 {
     public class Kunde
     {
-        public int Id { get; set; }
+        public int PKKundeID { get; set; }
         public string Fornavn { get; set; }
         public string Efternavn { get; set; }
         public string VejNavn { get; set; }

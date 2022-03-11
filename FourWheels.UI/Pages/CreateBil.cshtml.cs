@@ -34,17 +34,11 @@ namespace FourWheels.UI.Pages
         public async Task OnGet()
         {
             Kunder = await _customerService.GetAllAsync();
-            SelectKunde = new SelectList(Kunder, "Id", "Fuldenavn");
+            SelectKunde = new SelectList(Kunder, "PKKundeID", "Fuldenavn");
         }
 
         public async Task OnPost(Bil bil)
         {
-            //ModelState.ClearValidationState(nameof(bil));
-            // TryValidateModel(bil);
-            // if (!ModelState.IsValid)
-            // {
-            //     await _bilService.CreateAsync(bil);
-            // }
             await _bilService.CreateAsync(bil);
             await OnGet();
         }

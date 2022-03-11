@@ -17,9 +17,13 @@ namespace FourWheels.UI.Pages
         public List<Arbejdsordrer> Arbejdsordrers { get; set; }
 
 
+        public DateTime DefaultTime = new DateTime(01, 01, 0001, 00, 00, 00);
+
+        // && item.TidBrugt != ""
+
         public async Task OnGet()
         {
-            Arbejdsordrers = await _arbejdsOrdrerService.GetAllAsync();
+            Arbejdsordrers = await _arbejdsOrdrerService.GetAllAOIncludeMek();
         }
     }
 }

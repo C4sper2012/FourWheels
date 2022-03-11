@@ -16,35 +16,37 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" asp-page="/Index">FourWheels</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Hjem</a>
-          </li>
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Opret en:
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" asp-page="/Customer">Kunde</a></li>
-                    <li><a class="dropdown-item" href="#">Bil</a></li>
-                    <li><a class="dropdown-item" asp-page="CreateAO">Arbejdsordre</a></li>
-                </ul>
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" asp-page="/KundeListe">Kunde Liste</a>
-            </li>
-              <li class="nav-item">
-                <a class="nav-link" asp-page="/CreateBil">Opret Bil</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" asp-page="/ArbejdsOrdreListe">AO Liste</a>
-            </li>
-        </ul>
+    <div class="container">
+        <a class="navbar-brand" asp-page="/Index">FourWheels</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/KundeListe">Kunde Liste</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/ArbejdsOrdreListe">AO Liste</a>
+                </li>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle nav-link" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Opret
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" asp-page="/Customer">Kunde</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" asp-page="/CreateBil">Bil</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" asp-page="CreateAO">Arbejdsordre</a>
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -55,7 +57,7 @@
 </div>
 <footer class="mt-auto border-top footer text-muted">
     <div class="container">
-        &copy; 2022 - FourWheels.UI - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        &copy; @DateTime.Now.Year - FourWheels.UI
     </div>
 </footer>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
